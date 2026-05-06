@@ -21,8 +21,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Create `portfolio/.env.local` and paste in your OpenAI API key:
 
 ```bash
-OPENAI_API_KEY=sk-your-api-key-here
-OPENAI_MODEL=gpt-5.5
+OPENAI_API_KEY=your-openai-api-key-here
+OPENAI_MODEL=gpt-5-nano
 ```
 
 Then restart the dev server and open [http://localhost:3000/chat](http://localhost:3000/chat).

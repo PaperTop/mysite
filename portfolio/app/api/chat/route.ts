@@ -166,7 +166,7 @@ export async function POST(request: Request) {
         instructions:
           "You are a concise, friendly assistant on Jaden's personal website. Answer directly and avoid pretending you can access private information.",
         max_output_tokens: 900,
-        model: process.env.OPENAI_MODEL || "gpt-5.5",
+        model: process.env.OPENAI_MODEL || "gpt-5-nano",
         reasoning: {
           effort: "low",
         },
