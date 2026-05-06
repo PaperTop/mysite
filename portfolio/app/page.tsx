@@ -40,7 +40,7 @@ export default function Home() {
         </p>
 
         <div className="mt-8 border-4 border-zinc-950 bg-cyan-50 p-4">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-2xl font-black">Light Lock</h2>
             <p className="font-mono text-sm font-bold uppercase">{status}</p>
           </div>
@@ -78,12 +78,20 @@ export default function Home() {
           </button>
         </div>
 
-        <a
-          className="mt-8 inline-block bg-zinc-950 px-5 py-3 font-bold text-white"
-          href="mailto:hello@example.com"
-        >
-          Say hi
-        </a>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a
+            className="inline-block bg-zinc-950 px-5 py-3 text-center font-bold text-white"
+            href="/chat"
+          >
+            Open chat
+          </a>
+          <a
+            className="inline-block border-4 border-zinc-950 bg-white px-5 py-2 text-center font-bold"
+            href="mailto:hello@example.com"
+          >
+            Say hi
+          </a>
+        </div>
       </section>
     </main>
   );
