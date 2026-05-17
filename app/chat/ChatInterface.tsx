@@ -32,6 +32,16 @@ function makeMessage(role: ChatRole, content: string): ChatMessage {
   };
 }
 
+async function readChatResponse(response: Response): Promise<ChatResponse> {
+  try {
+    return (await response.json()) as ChatResponse;
+  } catch {
+    return {
+      error: "The assistant returned an unreadable response.",
+    };
+  }
+}
+
 export default function ChatInterface() {
   const [messages, setMessages] = useState<ChatMessage[]>(starterMessages);
   const [draft, setDraft] = useState("");
@@ -79,7 +89,7 @@ export default function ChatInterface() {
         method: "POST",
       });
 
-      const data = (await response.json()) as ChatResponse;
+      const data = await readChatResponse(response);
 
       if (!response.ok || !data.reply) {
         throw new Error(data.error || "The assistant could not reply.");

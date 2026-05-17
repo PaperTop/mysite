@@ -32,8 +32,23 @@ const MAX_MESSAGE_LENGTH = 4_000;
 const OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses";
 const RATE_LIMIT_MAX_REQUESTS = 12;
 const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_CLIENTS = 1_000;
+const UPSTREAM_TIMEOUT_MS = 30_000;
 
 const requestCounts = new Map<string, { count: number; resetAt: number }>();
+
+function jsonResponse(
+  body: { error: string } | { reply: string },
+  init?: ResponseInit,
+) {
+  return NextResponse.json(body, {
+    ...init,
+    headers: {
+      "Cache-Control": "no-store",
+      ...init?.headers,
+    },
+  });
+}
 
 function isChatMessage(value: unknown): value is ChatMessage {
   if (!value || typeof value !== "object") {
@@ -75,8 +90,22 @@ function getClientId(request: Request): string {
   );
 }
 
+function pruneExpiredRateLimits(now: number) {
+  if (requestCounts.size < RATE_LIMIT_MAX_CLIENTS) {
+    return;
+  }
+
+  for (const [clientId, current] of requestCounts) {
+    if (current.resetAt <= now) {
+      requestCounts.delete(clientId);
+    }
+  }
+}
+
 function isRateLimited(clientId: string): boolean {
   const now = Date.now();
+  pruneExpiredRateLimits(now);
+
   const current = requestCounts.get(clientId);
 
   if (!current || current.resetAt <= now) {
@@ -93,6 +122,16 @@ function isRateLimited(clientId: string): boolean {
 
   current.count += 1;
   return false;
+}
+
+async function readOpenAIResponse(response: Response): Promise<OpenAIResponse> {
+  const text = await response.text();
+
+  if (!text) {
+    return {};
+  }
+
+  return JSON.parse(text) as OpenAIResponse;
 }
 
 function extractResponseText(payload: OpenAIResponse): string {
@@ -120,14 +159,14 @@ export async function POST(request: Request) {
   const clientId = getClientId(request);
 
   if (isRateLimited(clientId)) {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "Too many chat requests. Try again shortly." },
       { status: 429 },
     );
   }
 
   if (!apiKey) {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "Missing OPENAI_API_KEY in the server environment." },
       { status: 500 },
     );
@@ -138,7 +177,7 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
+    return jsonResponse({ error: "Invalid JSON body." }, { status: 400 });
   }
 
   const messages = normalizeMessages(
@@ -148,13 +187,14 @@ export async function POST(request: Request) {
   );
 
   if (!messages || !messages.some((message) => message.role === "user")) {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "Send at least one user message under messages." },
       { status: 400 },
     );
   }
 
   let upstreamResponse: Response;
+  const timeout = AbortSignal.timeout(UPSTREAM_TIMEOUT_MS);
 
   try {
     upstreamResponse = await fetch(OPENAI_RESPONSES_URL, {
@@ -179,9 +219,10 @@ export async function POST(request: Request) {
         "Content-Type": "application/json",
       },
       method: "POST",
+      signal: timeout,
     });
   } catch {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "Could not reach the chat service." },
       { status: 502 },
     );
@@ -190,16 +231,16 @@ export async function POST(request: Request) {
   let payload: OpenAIResponse;
 
   try {
-    payload = (await upstreamResponse.json()) as OpenAIResponse;
+    payload = await readOpenAIResponse(upstreamResponse);
   } catch {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "The chat service returned an unreadable response." },
       { status: 502 },
     );
   }
 
   if (!upstreamResponse.ok) {
-    return NextResponse.json(
+    return jsonResponse(
       {
         error:
           payload.error?.message ||
@@ -212,18 +253,11 @@ export async function POST(request: Request) {
   const reply = extractResponseText(payload);
 
   if (!reply) {
-    return NextResponse.json(
+    return jsonResponse(
       { error: "The chat service returned an empty response." },
       { status: 502 },
     );
   }
 
-  return NextResponse.json(
-    { reply },
-    {
-      headers: {
-        "Cache-Control": "no-store",
-      },
-    },
-  );
+  return jsonResponse({ reply });
 }
