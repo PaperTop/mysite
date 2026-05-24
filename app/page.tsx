@@ -153,14 +153,14 @@ export default function Home() {
               </p>
               <div className="flex gap-[10px] flex-wrap max-[430px]:flex-col">
                 <button
-                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-none bg-red text-cream max-[430px]:w-full"
+                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-none bg-red text-cream max-[430px]:w-full transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-[1px] hover:shadow-[0_4px_12px_rgba(184,84,80,0.35)] hover:bg-[#c45c58] active:translate-y-0 active:shadow-md"
                   onClick={() => setActivePage("goods")}
                   type="button"
                 >
                   See my work
                 </button>
                 <button
-                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-[1.5px] border-pine bg-transparent text-pine max-[430px]:w-full"
+                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-[1.5px] border-pine bg-transparent text-pine max-[430px]:w-full transition-[transform,box-shadow,background-color,color] duration-200 hover:-translate-y-[1px] hover:bg-pine hover:text-cream hover:shadow-[0_4px_12px_rgba(61,90,71,0.25)] active:translate-y-0 active:shadow-md"
                   onClick={() => setActivePage("talk")}
                   type="button"
                 >
@@ -263,19 +263,19 @@ export default function Home() {
                   />
                 </label>
                 <a
-                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-none bg-red text-cream max-[430px]:w-full w-full"
+                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-none bg-red text-cream max-[430px]:w-full w-full transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-[1px] hover:shadow-[0_4px_12px_rgba(184,84,80,0.35)] hover:bg-[#c45c58] active:translate-y-0 active:shadow-md"
                   href="mailto:hello@example.com"
                 >
                   Send it
                 </a>
                 <div className="flex flex-wrap gap-[10px] mt-[24px]">
-                  <button className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px]" type="button">
+                  <button className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px] transition-[background-color,color,border-color,transform] duration-200 hover:bg-tan/15 hover:text-charcoal hover:border-tan hover:-translate-y-[1px] active:translate-y-0" type="button">
                     GitHub
                   </button>
-                  <button className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px]" type="button">
+                  <button className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px] transition-[background-color,color,border-color,transform] duration-200 hover:bg-tan/15 hover:text-charcoal hover:border-tan hover:-translate-y-[1px] active:translate-y-0" type="button">
                     LinkedIn
                   </button>
-                  <a className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px]" href="mailto:hello@example.com">
+                  <a className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px] transition-[background-color,color,border-color,transform] duration-200 hover:bg-tan/15 hover:text-charcoal hover:border-tan hover:-translate-y-[1px] active:translate-y-0" href="mailto:hello@example.com">
                     Email
                   </a>
                 </div>
