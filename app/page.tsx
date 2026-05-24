@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type PageId = "me" | "goods" | "brain" | "talk";
 
@@ -23,6 +23,23 @@ const snowflakes = Array.from({ length: 22 }, (_, index) => ({
 export default function Home() {
   const [activePage, setActivePage] = useState<PageId>("me");
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [hohos, setHohos] = useState<number[]>([]);
+
+  const playHoho = useCallback(() => {
+    const ctx = new AudioContext();
+    const notes = [523.25, 659.25, 783.99]; // C5, E5, G5
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.25, ctx.currentTime + i * 0.15);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.15 + 0.35);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.15);
+      osc.stop(ctx.currentTime + i * 0.15 + 0.35);
+    });
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -111,9 +128,28 @@ export default function Home() {
             aria-hidden={activePage !== "me"}
           >
             <div className="content-card">
-              <span className="hero-tag">AI @ ucsd</span>
+              <span className="hero-tag">AI @ UCSD</span>
               <h1 className="hero-h1">
-                Hey, I&apos;m Jaden Santa Huang.
+                Hey, I&apos;m Jaden{" "}
+                <span
+                  className="santa-name"
+                  onClick={() => { setHohos((prev) => [...prev, Date.now()]); playHoho(); }}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setHohos((prev) => [...prev, Date.now()]); playHoho(); } }}
+                >
+                  Santa
+                </span>{" "}
+                Huang.
+                {hohos.map((id) => (
+                  <span
+                    key={id}
+                    className="hoho-toast"
+                    onAnimationEnd={() => setHohos((prev) => prev.filter((h) => h !== id))}
+                  >
+                    Ho Ho Ho! 🎅
+                  </span>
+                ))}
                 <br />
                 I learn things.
               </h1>
