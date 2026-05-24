@@ -61,18 +61,18 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="page-shell">
-      <div className="wrapper">
+    <main className="min-h-screen min-h-[100svh] bg-gradient-to-br from-[#fbf7ef] to-[#e7dccb]">
+      <div className="relative w-full min-h-screen min-h-[100svh] overflow-hidden border-0 rounded-none">
         <canvas
           aria-hidden="true"
-          className="bg-canvas"
+          className="fixed inset-0 z-0 w-screen h-screen"
           ref={canvasRef}
         />
 
         {snowflakes.map((flake, index) => (
           <span
             aria-hidden="true"
-            className="snowflake"
+            className="fixed top-[-20px] text-[rgba(255,255,255,0.7)] animate-fall pointer-events-none select-none z-[1]"
             key={index}
             style={{
               animationDelay: flake.delay,
@@ -86,19 +86,22 @@ export default function Home() {
           </span>
         ))}
 
-        <div className="sleigh-container" aria-hidden="true">
-          <span className="sleigh">🦌🦌🛷🎅✨</span>
+        <div className="fixed top-[18%] left-0 w-full h-[100px] z-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+          <span className="inline-block text-[clamp(24px,3vw,36px)] drop-shadow-[0_0_8px_rgba(255,255,255,0.45)] animate-fly-across whitespace-nowrap">🦌🦌🛷🎅✨</span>
         </div>
 
-        <div className="site">
-          <nav className="nav" aria-label="Primary navigation">
-            <div className="nav-container">
-              <span className="nav-brand">Jaden 🎁</span>
-              <div className="nav-links">
+        <div className="relative z-[1] min-h-[inherit] bg-transparent">
+          <nav className="sticky top-0 z-10 min-h-[clamp(60px,8vh,80px)] px-[clamp(22px,6vw,72px)] border-b border-tan/25 bg-cream/92 backdrop-blur-[18px] backdrop-saturate-[1.4] flex items-center justify-center animate-nav-fade-in max-[720px]:px-[18px] max-[430px]:px-[14px] max-[430px]:py-[10px]" aria-label="Primary navigation">
+            <div className="flex items-center gap-[clamp(24px,3.5vw,40px)] w-full max-w-[1040px] mx-auto max-[720px]:gap-[10px] max-[430px]:flex-wrap max-[430px]:gap-[6px]">
+              <span className="text-charcoal text-[clamp(17px,1.7vw,22px)] font-semibold whitespace-nowrap tracking-[-0.02em] transition-colors duration-300 hover:text-red max-[430px]:text-[15px]">Jaden 🎁</span>
+              <div className="flex gap-[clamp(4px,0.8vw,6px)] ml-auto max-[720px]:gap-[2px] max-[430px]:order-3 max-[430px]:w-full max-[430px]:gap-[2px]">
                 {pages.map((page) => (
                   <button
-                    className={`nav-link ${activePage === page.id ? "active" : ""
-                      }`}
+                    className={`cursor-pointer border-0 bg-transparent text-[clamp(14px,1.35vw,16px)] px-[14px] py-[6px] rounded-lg transition-colors duration-250 relative hover:text-charcoal hover:bg-tan/15 max-[720px]:text-[12px] max-[720px]:px-[10px] max-[720px]:py-[5px] max-[430px]:text-[11px] max-[430px]:px-[8px] max-[430px]:py-[4px] ${
+                      activePage === page.id
+                        ? "text-red bg-red/10 font-semibold"
+                        : "text-charcoal font-medium"
+                    }`}
                     key={page.id}
                     onClick={() => setActivePage(page.id)}
                     type="button"
@@ -107,22 +110,24 @@ export default function Home() {
                   </button>
                 ))}
               </div>
-              <a className="nav-cta" href="#resume">
+              <a className="ml-[clamp(8px,1.5vw,16px)] px-[18px] py-[8px] border-none rounded-lg bg-red text-cream cursor-pointer text-[clamp(13px,1.2vw,15px)] font-medium tracking-[0.01em] transition-[transform,box-shadow,background-color] duration-200 shadow-[0_1px_3px_rgba(184,84,80,0.25)] hover:-translate-y-[1px] hover:shadow-[0_4px_12px_rgba(184,84,80,0.35)] hover:bg-[#c45c58] max-[720px]:px-[12px] max-[720px]:py-[6px] max-[430px]:ml-auto max-[430px]:px-[10px] max-[430px]:py-[5px] max-[430px]:text-[12px]" href="#resume">
                 Resume
               </a>
             </div>
           </nav>
 
           <section
-            className={`page ${activePage === "me" ? "active" : ""}`}
+            className={`min-h-[calc(100vh-clamp(68px,9vh,96px))] min-h-[calc(100svh-clamp(68px,9vh,96px))] p-[clamp(24px,4vw,56px)] max-[720px]:px-[18px] max-[720px]:pt-[28px] max-[720px]:pb-[40px] max-[430px]:px-[12px] max-[430px]:pt-[46px] max-[430px]:pb-[34px] ${
+              activePage === "me" ? "grid items-center" : "hidden"
+            }`}
             aria-hidden={activePage !== "me"}
           >
-            <div className="content-card">
-              <span className="hero-tag">AI @ UCSD</span>
-              <h1 className="hero-h1">
+            <div className="w-[min(100%,1040px)] min-w-0 p-[clamp(24px,4vw,44px)] border-[0.5px] border-tan/40 rounded-[clamp(16px,2vw,26px)] bg-cream/85 backdrop-blur-[10px] max-[720px]:w-full max-[720px]:min-h-auto max-[430px]:p-[24px] max-[430px]:w-[calc(100vw-24px)] max-[430px]:max-w-[calc(100vw-24px)]">
+              <span className="inline-block mb-[16px] px-[14px] py-[6px] rounded-[20px] bg-pine/12 text-pine text-[clamp(12px,1.3vw,16px)] font-medium">AI @ UCSD</span>
+              <h1 className="mt-0 mx-0 mb-[18px] text-charcoal text-[clamp(38px,5vw,64px)] font-medium leading-[1.12] tracking-0 relative max-[720px]:text-[clamp(34px,10vw,52px)] max-[430px]:text-[clamp(34px,11vw,44px)] max-[430px]:leading-[1.16]">
                 Hey, I&apos;m Jaden{" "}
                 <span
-                  className="santa-name"
+                  className="bg-gradient-to-br from-[#c0392b] via-[#e74c3c] via-[#f39c12] via-[#e74c3c] to-[#c0392b] bg-[length:300%_300%] bg-clip-text text-transparent animate-santa-shimmer font-semibold cursor-pointer transition-transform duration-200 inline-block hover:scale-[1.08] active:scale-[0.95]"
                   onClick={() => { setHohos((prev) => [...prev, Date.now()]); playHoho(); }}
                   role="button"
                   tabIndex={0}
@@ -134,7 +139,7 @@ export default function Home() {
                 {hohos.map((id) => (
                   <span
                     key={id}
-                    className="hoho-toast"
+                    className="absolute left-1/2 -translate-x-1/2 text-[clamp(18px,2.5vw,28px)] font-semibold text-red bg-none pointer-events-none whitespace-nowrap animate-hoho-float"
                     onAnimationEnd={() => setHohos((prev) => prev.filter((h) => h !== id))}
                   >
                     Ho Ho Ho! 🎅
@@ -143,19 +148,19 @@ export default function Home() {
                 <br />
                 I learn things.
               </h1>
-              <p className="hero-sub">
-                I built this site not only as a portfolio, but also as a place to share my thoughts and ideas. I wanted to show what I have accomplished, but I also wanted to make something more personal. I wanted whoever comes across this site to really get to know who I am as a person, the values I hold, and what I'm working on. As a result, I present knowJaden.dev.
+              <p className="max-w-[720px] mt-0 mx-0 mb-[28px] text-stone text-[clamp(16px,1.5vw,21px)] leading-[1.65] break-all max-[430px]:max-w-full max-[430px]:text-[15px]">
+                I built this site not only as a portfolio, but also as a place to share my thoughts and ideas. I wanted to show what I have accomplished, but I also wanted to make something more personal. I wanted whoever comes across this site to really get to know who I am as a person, the values I hold, and what I&apos;m working on. As a result, I present knowJaden.dev.
               </p>
-              <div className="hero-btns">
+              <div className="flex gap-[10px] flex-wrap max-[430px]:flex-col">
                 <button
-                  className="btn-primary"
+                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-none bg-red text-cream max-[430px]:w-full"
                   onClick={() => setActivePage("goods")}
                   type="button"
                 >
                   See my work
                 </button>
                 <button
-                  className="btn-outline"
+                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-[1.5px] border-pine bg-transparent text-pine max-[430px]:w-full"
                   onClick={() => setActivePage("talk")}
                   type="button"
                 >
@@ -166,50 +171,54 @@ export default function Home() {
           </section>
 
           <section
-            className={`page ${activePage === "goods" ? "active" : ""}`}
+            className={`min-h-[calc(100vh-clamp(68px,9vh,96px))] min-h-[calc(100svh-clamp(68px,9vh,96px))] p-[clamp(24px,4vw,56px)] max-[720px]:px-[18px] max-[720px]:pt-[28px] max-[720px]:pb-[40px] max-[430px]:px-[12px] max-[430px]:pt-[46px] max-[430px]:pb-[34px] ${
+              activePage === "goods" ? "grid items-center" : "hidden"
+            }`}
             aria-hidden={activePage !== "goods"}
           >
-            <div className="content-card">
-              <h2 className="page-title">Goods 🎁</h2>
-              <p className="page-desc">TBD</p>
+            <div className="w-[min(100%,1040px)] min-w-0 p-[clamp(24px,4vw,44px)] border-[0.5px] border-tan/40 rounded-[clamp(16px,2vw,26px)] bg-cream/85 backdrop-blur-[10px] max-[720px]:w-full max-[720px]:min-h-auto max-[430px]:p-[24px] max-[430px]:w-[calc(100vw-24px)] max-[430px]:max-w-[calc(100vw-24px)]">
+              <h2 className="mt-0 mx-0 mb-[6px] text-charcoal text-[clamp(28px,4vw,48px)] font-medium">Goods 🎁</h2>
+              <p className="mt-0 mx-0 mb-[24px] text-stone text-[clamp(14px,1.35vw,18px)] leading-[1.6]">TBD</p>
             </div>
           </section>
 
           <section
-            className={`page ${activePage === "brain" ? "active" : ""}`}
+            className={`min-h-[calc(100vh-clamp(68px,9vh,96px))] min-h-[calc(100svh-clamp(68px,9vh,96px))] p-[clamp(24px,4vw,56px)] max-[720px]:px-[18px] max-[720px]:pt-[28px] max-[720px]:pb-[40px] max-[430px]:px-[12px] max-[430px]:pt-[46px] max-[430px]:pb-[34px] ${
+              activePage === "brain" ? "grid items-center" : "hidden"
+            }`}
             aria-hidden={activePage !== "brain"}
           >
-            <div className="content-card">
-              <h2 className="page-title">Brain 🧠</h2>
-              <p className="page-desc">
+            <div className="w-[min(100%,1040px)] min-w-0 p-[clamp(24px,4vw,44px)] border-[0.5px] border-tan/40 rounded-[clamp(16px,2vw,26px)] bg-cream/85 backdrop-blur-[10px] max-[720px]:w-full max-[720px]:min-h-auto max-[430px]:p-[24px] max-[430px]:w-[calc(100vw-24px)] max-[430px]:max-w-[calc(100vw-24px)]">
+              <h2 className="mt-0 mx-0 mb-[6px] text-charcoal text-[clamp(28px,4vw,48px)] font-medium">Brain 🧠</h2>
+              <p className="mt-0 mx-0 mb-[24px] text-stone text-[clamp(14px,1.35vw,18px)] leading-[1.6]">
                 Random things to get to know me better.
               </p>
-              <div className="brain-grid">
-                <div className="brain-card">
-                  <div className="brain-icon">♣️</div>
-                  <div className="brain-title">Poker</div>
-                  <div className="brain-text">
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(min(210px,100%),1fr))] gap-[clamp(12px,1.5vw,18px)]">
+                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
+                  <div className="mb-[10px] text-[20px]">♣️</div>
+                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Poker</div>
+                  <div className="text-stone text-[12px] leading-[1.6]">
                     Recreational player. Obsessed with GTO and hand equity math.
                   </div>
                 </div>
-                <div className="brain-card">
-                  <div className="brain-icon">🏃</div>
-                  <div className="brain-title">Running</div>
-                  <div className="brain-text">
+                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
+                  <div className="mb-[10px] text-[20px]">🏃</div>
+                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Running</div>
+                  <div className="text-stone text-[12px] leading-[1.6]">
                     Morning runs for the BDNF. It actually works.
                   </div>
                 </div>
-                <div className="brain-card">
-                  <div className="brain-icon">🧠</div>
-                  <div className="brain-title">Neuro nerd</div>
-                  <div className="brain-text">
+                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
+                  <div className="mb-[10px] text-[20px]">🧠</div>
+                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Neuro nerd</div>
+                  <div className="text-stone text-[12px] leading-[1.6]">
                     Sleep science, working memory, cognitive performance.
                   </div>
                 </div>
-                <div className="brain-card">
-                  <div className="brain-icon">📚</div>
-                  <div className="brain-title">Philosophy</div>
-                  <div className="brain-text">
+                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
+                  <div className="mb-[10px] text-[20px]">📚</div>
+                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Philosophy</div>
+                  <div className="text-stone text-[12px] leading-[1.6]">
                     I like asking &quot;why&quot; until someone gets annoyed.
                   </div>
                 </div>
@@ -218,53 +227,55 @@ export default function Home() {
           </section>
 
           <section
-            className={`page ${activePage === "talk" ? "active" : ""}`}
+            className={`min-h-[calc(100vh-clamp(68px,9vh,96px))] min-h-[calc(100svh-clamp(68px,9vh,96px))] p-[clamp(24px,4vw,56px)] max-[720px]:px-[18px] max-[720px]:pt-[28px] max-[720px]:pb-[40px] max-[430px]:px-[12px] max-[430px]:pt-[46px] max-[430px]:pb-[34px] ${
+              activePage === "talk" ? "grid items-center" : "hidden"
+            }`}
             aria-hidden={activePage !== "talk"}
           >
-            <div className="content-card">
-              <h2 className="page-title">Talk? 🎄</h2>
-              <p className="page-desc">
+            <div className="w-[min(100%,1040px)] min-w-0 p-[clamp(24px,4vw,44px)] border-[0.5px] border-tan/40 rounded-[clamp(16px,2vw,26px)] bg-cream/85 backdrop-blur-[10px] max-[720px]:w-full max-[720px]:min-h-auto max-[430px]:p-[24px] max-[430px]:w-[calc(100vw-24px)] max-[430px]:max-w-[calc(100vw-24px)]">
+              <h2 className="mt-0 mx-0 mb-[6px] text-charcoal text-[clamp(28px,4vw,48px)] font-medium">Talk? 🎄</h2>
+              <p className="mt-0 mx-0 mb-[24px] text-stone text-[clamp(14px,1.35vw,18px)] leading-[1.6]">
                 Whether it&apos;s a project, opportunity, or just to chat, I&apos;m
                 around.
               </p>
-              <div className="talk-wrap">
-                <label className="form-group">
-                  <span className="form-label">Name</span>
+              <div className="max-w-[560px]">
+                <label className="block mb-[16px]">
+                  <span className="block mb-[6px] text-stone text-[12px]">Name</span>
                   <input
-                    className="form-input"
+                    className="w-full px-[12px] py-[9px] border-[0.5px] border-tan/50 rounded-lg outline-none bg-surface/70 text-charcoal text-[13px]"
                     placeholder="Your name"
                     type="text"
                   />
                 </label>
-                <label className="form-group">
-                  <span className="form-label">Email</span>
+                <label className="block mb-[16px]">
+                  <span className="block mb-[6px] text-stone text-[12px]">Email</span>
                   <input
-                    className="form-input"
+                    className="w-full px-[12px] py-[9px] border-[0.5px] border-tan/50 rounded-lg outline-none bg-surface/70 text-charcoal text-[13px]"
                     placeholder="you@example.com"
                     type="email"
                   />
                 </label>
-                <label className="form-group">
-                  <span className="form-label">Message</span>
+                <label className="block mb-[16px]">
+                  <span className="block mb-[6px] text-stone text-[12px]">Message</span>
                   <textarea
-                    className="form-input"
+                    className="w-full px-[12px] py-[9px] border-[0.5px] border-tan/50 rounded-lg outline-none bg-surface/70 text-charcoal text-[13px] min-h-[100px] resize-y"
                     placeholder="What's on your mind?"
                   />
                 </label>
                 <a
-                  className="btn-primary full-width"
+                  className="inline-flex items-center justify-center min-h-[44px] px-[22px] py-[10px] rounded-lg cursor-pointer text-[clamp(14px,1.25vw,17px)] font-medium border-none bg-red text-cream max-[430px]:w-full w-full"
                   href="mailto:hello@example.com"
                 >
                   Send it
                 </a>
-                <div className="social-row">
-                  <button className="social-pill" type="button">
+                <div className="flex flex-wrap gap-[10px] mt-[24px]">
+                  <button className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px]" type="button">
                     GitHub
                   </button>
-                  <button className="social-pill" type="button">
+                  <button className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px]" type="button">
                     LinkedIn
                   </button>
-                  <a className="social-pill" href="mailto:hello@example.com">
+                  <a className="cursor-pointer px-[14px] py-[7px] border-[0.5px] border-tan/50 rounded-[20px] bg-transparent text-stone text-[12px]" href="mailto:hello@example.com">
                     Email
                   </a>
                 </div>
