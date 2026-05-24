@@ -16,17 +16,6 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Chat API setup
-
-Create `.env.local` and paste in your OpenAI API key:
-
-```bash
-OPENAI_API_KEY=your-openai-api-key-here
-OPENAI_MODEL=gpt-5-nano
-```
-
-Then restart the dev server and open [http://localhost:3000/chat](http://localhost:3000/chat).
-
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Scrappy Webpage",
-  description: "A rough little homepage.",
+  title: "Jaden Santa Huang",
+  description: "Personal website for Jaden Santa Huang.",
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
 };
 
 export default function RootLayout({
