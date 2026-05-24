@@ -79,26 +79,31 @@ export default function Home() {
           </span>
         ))}
 
+        <div className="sleigh-container" aria-hidden="true">
+          <span className="sleigh">🦌🦌🛷🎅✨</span>
+        </div>
+
         <div className="site">
           <nav className="nav" aria-label="Primary navigation">
-            <span className="nav-brand">jaden 🎁</span>
-            <div className="nav-links">
-              {pages.map((page) => (
-                <button
-                  className={`nav-link ${
-                    activePage === page.id ? "active" : ""
-                  }`}
-                  key={page.id}
-                  onClick={() => setActivePage(page.id)}
-                  type="button"
-                >
-                  {page.label}
-                </button>
-              ))}
+            <div className="nav-container">
+              <span className="nav-brand">Jaden 🎁</span>
+              <div className="nav-links">
+                {pages.map((page) => (
+                  <button
+                    className={`nav-link ${activePage === page.id ? "active" : ""
+                      }`}
+                    key={page.id}
+                    onClick={() => setActivePage(page.id)}
+                    type="button"
+                  >
+                    {page.label}
+                  </button>
+                ))}
+              </div>
+              <a className="nav-cta" href="#resume">
+                Resume
+              </a>
             </div>
-            <a className="nav-cta" href="#resume">
-              Resume
-            </a>
           </nav>
 
           <section
@@ -106,15 +111,14 @@ export default function Home() {
             aria-hidden={activePage !== "me"}
           >
             <div className="content-card">
-              <span className="hero-tag">CS + AI @ UC San Diego</span>
+              <span className="hero-tag">AI @ ucsd</span>
               <h1 className="hero-h1">
                 Hey, I&apos;m Jaden Santa Huang.
                 <br />
-                I build things.
+                I learn things.
               </h1>
               <p className="hero-sub">
-                First-year CS student exploring AI, frontend engineering, and
-                whatever else keeps me up at night. Currently building.
+                I built this site not only as a portfolio, but also as a place to share my thoughts and ideas. I wanted to show what I have accomplished, but I also wanted to make something more personal. I wanted whoever comes across this site to really get to know who I am as a person, the values I hold, and what I'm working on. As a result, I present knowJaden.dev.
               </p>
               <div className="hero-btns">
                 <button
@@ -263,6 +267,7 @@ function drawScene(
 
   drawMoon(context, width, height);
   drawStars(context, width, height);
+  drawMountains(context, width, height);
   drawSnowGround(context, width, height);
 
   drawTree(context, width * 0.06, height * 0.82, width * 0.065, height * 0.26);
@@ -274,6 +279,7 @@ function drawScene(
   drawLights(context, width, height);
   drawCandyCane(context, width * 0.25, height * 0.82, height * 0.14);
   drawCandyCane(context, width * 0.75, height * 0.82, height * 0.14);
+  drawSnowman(context, width * 0.38, height * 0.78, height * 0.035);
 }
 
 function drawMoon(
@@ -537,4 +543,74 @@ function drawCandyCane(
   context.setLineDash([4, 4]);
   context.stroke();
   context.setLineDash([]);
+}
+
+function drawMountains(
+  context: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+) {
+  context.beginPath();
+  context.moveTo(0, height * 0.8);
+  context.lineTo(width * 0.2, height * 0.55);
+  context.lineTo(width * 0.45, height * 0.78);
+  context.lineTo(width * 0.7, height * 0.55);
+  context.lineTo(width * 0.9, height * 0.75);
+  context.lineTo(width, height * 0.7);
+  context.lineTo(width, height);
+  context.lineTo(0, height);
+  context.closePath();
+  context.fillStyle = "#224233";
+  context.fill();
+}
+
+function drawSnowman(
+  context: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  size: number,
+) {
+  // Bottom circle
+  context.beginPath();
+  context.arc(x, y, size, 0, Math.PI * 2);
+  context.fillStyle = "#F5EFE6";
+  context.fill();
+
+  // Middle circle
+  context.beginPath();
+  context.arc(x, y - size * 1.5, size * 0.75, 0, Math.PI * 2);
+  context.fillStyle = "#F5EFE6";
+  context.fill();
+
+  // Head circle
+  context.beginPath();
+  context.arc(x, y - size * 2.6, size * 0.5, 0, Math.PI * 2);
+  context.fillStyle = "#F5EFE6";
+  context.fill();
+
+  // Eyes
+  context.fillStyle = "#2B2B2B";
+  context.beginPath();
+  context.arc(x - size * 0.18, y - size * 2.7, size * 0.06, 0, Math.PI * 2);
+  context.arc(x + size * 0.18, y - size * 2.7, size * 0.06, 0, Math.PI * 2);
+  context.fill();
+
+  // Carrot nose
+  context.fillStyle = "#D97706";
+  context.beginPath();
+  context.moveTo(x, y - size * 2.6);
+  context.lineTo(x + size * 0.35, y - size * 2.55);
+  context.lineTo(x, y - size * 2.5);
+  context.closePath();
+  context.fill();
+
+  // Top hat
+  context.fillStyle = "#2B2B2B";
+  context.fillRect(x - size * 0.5, y - size * 3.1, size, size * 0.1);
+  context.fillRect(x - size * 0.3, y - size * 3.6, size * 0.6, size * 0.5);
+
+  // Red scarf
+  context.fillStyle = "#B85450";
+  context.fillRect(x - size * 0.35, y - size * 2.15, size * 0.7, size * 0.12);
+  context.fillRect(x + size * 0.1, y - size * 2.15, size * 0.15, size * 0.5);
 }
