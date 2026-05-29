@@ -190,39 +190,6 @@ export default function Home() {
           >
             <div className="w-[min(100%,1040px)] min-w-0 p-[clamp(24px,4vw,44px)] border-[0.5px] border-tan/40 rounded-[clamp(16px,2vw,26px)] bg-cream/85 backdrop-blur-[10px] max-[720px]:w-full max-[720px]:min-h-auto max-[430px]:p-[24px] max-[430px]:w-[calc(100vw-24px)] max-[430px]:max-w-[calc(100vw-24px)]">
               <h2 className="mt-0 mx-0 mb-[6px] text-charcoal text-[clamp(28px,4vw,48px)] font-medium">Brain 🧠</h2>
-              <p className="mt-0 mx-0 mb-[24px] text-stone text-[clamp(14px,1.35vw,18px)] leading-[1.6]">
-                Random things to get to know me better.
-              </p>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(min(210px,100%),1fr))] gap-[clamp(12px,1.5vw,18px)]">
-                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
-                  <div className="mb-[10px] text-[20px]">♣️</div>
-                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Poker</div>
-                  <div className="text-stone text-[12px] leading-[1.6]">
-                    Recreational player. Obsessed with GTO and hand equity math.
-                  </div>
-                </div>
-                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
-                  <div className="mb-[10px] text-[20px]">🏃</div>
-                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Running</div>
-                  <div className="text-stone text-[12px] leading-[1.6]">
-                    Morning runs for the BDNF. It actually works.
-                  </div>
-                </div>
-                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
-                  <div className="mb-[10px] text-[20px]">🧠</div>
-                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Neuro nerd</div>
-                  <div className="text-stone text-[12px] leading-[1.6]">
-                    Sleep science, working memory, cognitive performance.
-                  </div>
-                </div>
-                <div className="p-[clamp(18px,2vw,26px)] rounded-xl bg-surface/70">
-                  <div className="mb-[10px] text-[20px]">📚</div>
-                  <div className="mb-[6px] text-charcoal text-[13px] font-medium">Philosophy</div>
-                  <div className="text-stone text-[12px] leading-[1.6]">
-                    I like asking &quot;why&quot; until someone gets annoyed.
-                  </div>
-                </div>
-              </div>
             </div>
           </section>
 
