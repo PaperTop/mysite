@@ -62,7 +62,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen min-h-[100svh] bg-gradient-to-br from-[#fbf7ef] to-[#e7dccb]">
-      <div className="relative w-full min-h-screen min-h-[100svh] overflow-hidden border-0 rounded-none">
+      <div className="relative w-full min-h-screen min-h-[100svh] overflow-x-hidden border-0 rounded-none">
         <canvas
           aria-hidden="true"
           className="fixed inset-0 z-0 w-screen h-screen"
@@ -148,7 +148,7 @@ export default function Home() {
                 <br />
                 I learn things.
               </h1>
-              <p className="max-w-[720px] mt-0 mx-0 mb-[28px] text-stone text-[clamp(16px,1.5vw,21px)] leading-[1.65] break-all max-[430px]:max-w-full max-[430px]:text-[15px]">
+              <p className="max-w-[720px] mt-0 mx-0 mb-[28px] text-stone text-[clamp(16px,1.5vw,21px)] leading-[1.65] break-words max-[430px]:max-w-full max-[430px]:text-[15px]">
                 I built this site not only as a portfolio, but also as a place to share my thoughts and ideas. I wanted to show what I have accomplished, but I also wanted to make something more personal. I wanted whoever comes across this site to really get to know who I am as a person, the values I hold, and what I&apos;m working on. As a result, I present knowJaden.dev.
               </p>
               <div className="flex gap-[10px] flex-wrap max-[430px]:flex-col">
