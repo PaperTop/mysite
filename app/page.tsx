@@ -40,7 +40,7 @@ export default function MePage() {
           <br />
           I learn things.
         </h1>
-        <p className="max-w-[720px] mt-0 mx-0 mb-[28px] text-stone text-[clamp(16px,1.5vw,21px)] leading-[1.65] break-all max-[430px]:max-w-full max-[430px]:text-[15px]">
+        <p className="max-w-[720px] mt-0 mx-0 mb-[28px] text-stone text-[clamp(16px,1.5vw,21px)] leading-[1.65] max-[430px]:max-w-full max-[430px]:text-[15px]">
           I built this site not only as a portfolio, but also as a place to share my thoughts and ideas. I wanted to show what I have accomplished, but I also wanted to make something more personal. I wanted whoever comes across this site to really get to know who I am as a person, the values I hold, and what I&apos;m working on. As a result, I present knowJaden.dev.
         </p>
         <div className="flex gap-[10px] flex-wrap max-[430px]:flex-col">
