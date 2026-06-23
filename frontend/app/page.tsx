@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import SnowGlobe from "./components/SnowGlobe";
-import { CandyDivider, SectionHead } from "./components/portfolio";
+import SnowGlobe from "../components/SnowGlobe";
+import { CandyDivider, SectionHead } from "../components/portfolio";
 
 const exploreCards = [
   { color: "#1a7a4e", emoji: "🧝", href: "/about", title: "About", text: "Who I am, where I study, and 24 little doors of trivia.", action: "Meet the elf" },

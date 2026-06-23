@@ -1,4 +1,4 @@
-import { buttonBase, CandyDivider, ChipList, PageHero, SectionHead } from "../components/portfolio";
+import { buttonBase, CandyDivider, ChipList, PageHero, SectionHead } from "../../components/portfolio";
 
 const skillGroups = [
   ["💻", "Languages", ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL"]],

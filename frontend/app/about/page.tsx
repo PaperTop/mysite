@@ -1,5 +1,5 @@
-import AdventCalendar from "../components/AdventCalendar";
-import { CandyDivider, ChipList, PageHero, Placeholder, SectionHead } from "../components/portfolio";
+import AdventCalendar from "../../components/AdventCalendar";
+import { CandyDivider, ChipList, PageHero, Placeholder, SectionHead } from "../../components/portfolio";
 
 export default function AboutPage() {
   return (

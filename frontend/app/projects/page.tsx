@@ -1,4 +1,4 @@
-import { ChipList, PageHero, Placeholder, ProjectLinks } from "../components/portfolio";
+import { ChipList, PageHero, Placeholder, ProjectLinks } from "../../components/portfolio";
 
 const projects = [
   {

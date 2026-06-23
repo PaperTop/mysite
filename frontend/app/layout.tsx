@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import SiteShell from "./components/SiteShell";
+import SiteShell from "../components/SiteShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
