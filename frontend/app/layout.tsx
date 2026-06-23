@@ -4,8 +4,8 @@ import SiteShell from "./components/SiteShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jaden Santa Huang",
-  description: "Personal website for Jaden Santa Huang.",
+  title: "Jaden Santa Huang - Full-Stack Elf",
+  description: "CS student and full-stack developer. Open to Summer 2026 internships.",
 };
 
 export const viewport: Viewport = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full">
         <SiteShell>{children}</SiteShell>
         <Analytics />
       </body>
