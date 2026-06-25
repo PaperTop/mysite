@@ -1,5 +1,5 @@
 import FloatingActions from "./FloatingActions";
-import { AuroraBackground, HolidayLights, SleighFlyBy } from "./HolidayEffects";
+import { AuroraBackground, HolidayLights } from "./HolidayEffects";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
 import SnowCanvas from "./SnowCanvas";
@@ -10,15 +10,14 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     <ThemeProvider>
       <>
         <SnowCanvas />
-        <canvas id="bg3d" aria-hidden="true" />
+        <canvas className="pointer-events-none fixed inset-0 z-0 opacity-50 transition-opacity duration-[600ms] body-[.night]:opacity-[.72]" id="bg3d" aria-hidden="true" />
         <AuroraBackground />
-        <SleighFlyBy />
         <HolidayLights />
         <SiteHeader />
         <main id="top">{children}</main>
         <SiteFooter />
         <FloatingActions />
-        <div className="snowburst" id="snowburst" aria-hidden="true" />
+        <div className="pointer-events-none fixed inset-0 z-[70] overflow-hidden" id="snowburst" aria-hidden="true" />
       </>
     </ThemeProvider>
   );

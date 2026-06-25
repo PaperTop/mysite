@@ -1,7 +1,16 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import SnowGlobe from "../components/SnowGlobe";
-import { CandyDivider, SectionHead } from "../components/portfolio";
+import {
+  buttonGhostClass,
+  buttonRedClass,
+  CandyDivider,
+  revealInClass,
+  sectionClass,
+  SectionHead,
+  tiltClass,
+  tiltGlareClass,
+} from "../components/ui";
 
 const exploreCards = [
   { color: "#1a7a4e", emoji: "🧝", href: "/about", title: "About", text: "Who I am, where I study, and 24 little doors of trivia.", action: "Meet the elf" },
@@ -14,66 +23,65 @@ const exploreCards = [
 export default function HomePage() {
   return (
     <>
-      <section className="hero" id="hero" data-screen-label="Home — hero">
-        <div className="hero-grid">
-          <div className="hero-copy reveal in">
-            <p className="hero-kicker">Ho ho ho, welcome to my workshop</p>
-            <h1 className="hero-title">
+      <section
+        className="relative z-[3] mx-auto flex min-h-svh w-full max-w-[1180px] flex-col justify-center px-[18px] pb-20 pt-[110px] sm:px-8 lg:px-[46px] max-[920px]:pt-[90px]"
+        id="hero"
+        data-screen-label="Home — hero"
+      >
+        <div className="grid w-full grid-cols-[1.05fr_.95fr] items-center gap-6 lg:gap-14 max-[920px]:grid-cols-1 max-[920px]:text-center">
+          <div className={`${revealInClass} relative max-[920px]:order-2`}>
+            <p className="mb-5 inline-block rounded-full border-2 border-dashed border-[var(--pine)] bg-[var(--surface)] px-[18px] py-[7px] font-display text-[.95rem] font-semibold text-[var(--pine)] shadow-[var(--shadow-sm)] body-[.night]:border-[var(--gold-soft)] body-[.night]:text-[var(--gold-soft)]">
+              Ho ho ho, welcome to my workshop
+            </p>
+            <h1 className="mb-[18px] font-display text-[clamp(2.5rem,5.6vw,4.6rem)] font-bold leading-[1.05] [text-shadow:0_3px_0_rgba(255,255,255,.7)] body-[.night]:[text-shadow:0_0_26px_rgba(120,150,255,.35)]">
               Hi, I&apos;m{" "}
-              <span className="nowrap">
-                Jaden <span className="santa-script">Santa</span> Huang
+              <span className="block sm:inline sm:whitespace-nowrap">
+                Jaden <span className="font-script font-bold text-[var(--gold)]">Santa</span>{" "}
+                <span className="block sm:inline">Huang</span>
               </span>
             </h1>
-            <p className="hero-sub">
+            <p className="mb-[30px] max-w-[560px] text-[clamp(1.02rem,1.5vw,1.22rem)] text-[var(--ink-soft)] max-[920px]:mx-auto">
               A computer science student &amp; full-stack developer who ships delightful things all year round — not just in December.
-              Currently hunting for <strong>Summer 2026 internships</strong>.
+              Currently hunting for <strong className="text-[var(--red)]">Summer 2026 internships</strong>.
             </p>
-            <div className="hero-actions">
-              <Link href="#sleighshow" className="btn btn-red">Take a sleigh ride</Link>
-              <Link href="/contact" className="btn btn-ghost">Leave me a letter</Link>
+            <div className="mb-7 flex flex-wrap gap-3.5 max-[920px]:justify-center">
+              <Link href="#explore" className={buttonRedClass}>Explore the workshop</Link>
+              <Link href="/contact" className={buttonGhostClass}>Leave me a letter</Link>
             </div>
-            <div className="hero-meta">
+            <div className="flex flex-wrap gap-2.5 text-[.95rem] font-semibold text-[var(--ink-soft)] max-[920px]:justify-center">
               <span>🎓 CS @ North Pole University</span>
-              <span className="dot">•</span>
+              <span className="text-[var(--gold)]">•</span>
               <span>⚡ Open to work</span>
             </div>
           </div>
 
           <SnowGlobe />
         </div>
-        <div className="scroll-cue" aria-hidden="true">
+        <div className="absolute bottom-[18px] left-1/2 z-[3] flex -translate-x-1/2 flex-col items-center gap-0.5 text-[.82rem] font-semibold text-[var(--ink-soft)]" aria-hidden="true">
           <span>scroll down the chimney</span>
-          <span className="chev">⌄</span>
+          <span className="animate-bob text-[1.6rem] leading-[.6] motion-reduce:animate-none">⌄</span>
         </div>
       </section>
 
       <CandyDivider />
 
-      <section className="section sleigh-sec" id="sleighshow" data-screen-label="Home — 3D sleigh">
-        <SectionHead eyebrow="🛷 Take a ride" title="Come fly with me" description="My ride of choice. Built it myself — grab it and give it a spin. (Yes, it's fully 3D.)" />
-        <div className="sleigh-stage reveal in">
-          <div className="sleigh-fallback" style={{ display: "flex" }}>🛷</div>
-        </div>
-        <p className="globe-hint">✦ drag-free sleigh preview ✦</p>
-      </section>
-
-      <CandyDivider flip />
-
-      <section className="section" id="explore" data-screen-label="Home — explore">
+      <section className={sectionClass} id="explore" data-screen-label="Home — explore">
         <SectionHead eyebrow="🧭 Explore" title="Where to next?" description="Five stops on the tour. Start wherever you like." />
-        <div className="explore-grid">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
           {exploreCards.map((card) => (
             <Link
               key={card.href}
-              className="explore-card reveal in tilt"
+              className={`${revealInClass} ${tiltClass} relative block overflow-hidden rounded-[20px] border-b-4 border-[var(--ec,#d12b3a)] bg-[var(--surface)] px-[26px] py-[30px] shadow-[var(--shadow-sm)] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[7px]`}
               href={card.href}
               style={{ "--ec": card.color } as CSSProperties}
             >
-              <span className="ec-emoji">{card.emoji}</span>
-              <h3>{card.title}</h3>
-              <p>{card.text}</p>
-              <span className="ec-go">{card.action} →</span>
-              <div className="tilt-glare" />
+              <span className="mb-3 block text-[2.2rem]">{card.emoji}</span>
+              <h3 className="mb-1.5 font-display text-[1.3rem] leading-[1.05]">{card.title}</h3>
+              <p className="text-[.92rem] text-[var(--ink-soft)]">{card.text}</p>
+              <span className="mt-3.5 inline-block font-display font-semibold text-[var(--red)] transition-transform duration-200 group-hover:translate-x-1 body-[.night]:text-[#ff9aa2]">
+                {card.action} →
+              </span>
+              <div className={tiltGlareClass} />
             </Link>
           ))}
         </div>

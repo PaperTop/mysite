@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { revealInClass } from "./ui";
 
 export default function SnowGlobe() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -276,23 +277,26 @@ export default function SnowGlobe() {
   }, []);
 
   return (
-    <div className="hero-globe reveal in">
+    <div className={`${revealInClass} flex select-none flex-col items-center gap-0 max-[920px]:order-1`}>
       <div
-        className="globe-stage"
+        className="relative h-[min(420px,80vw)] w-[min(420px,80vw)] cursor-grab touch-none rounded-full active:cursor-grabbing"
         ref={stageRef}
         role="img"
         aria-label="Interactive snow globe with a Christmas tree and gifts"
       >
-        <canvas id="globe3d" ref={canvasRef} aria-hidden="true" />
-        <div className="globe-glass" aria-hidden="true" />
-        <div className="globe-fallback" aria-hidden="true">
+        <canvas className="absolute inset-0 block h-full w-full rounded-full body-[.no3d]:opacity-0" id="globe3d" ref={canvasRef} aria-hidden="true" />
+        <div
+          className="pointer-events-none absolute inset-0 rounded-full border border-white/50 bg-[radial-gradient(38%_30%_at_32%_24%,rgba(255,255,255,.55),rgba(255,255,255,0)_60%),radial-gradient(120%_120%_at_70%_78%,rgba(120,160,255,.12),transparent_55%)] shadow-[inset_0_-22px_50px_rgba(60,90,160,.18),inset_0_14px_40px_rgba(255,255,255,.5),0_30px_60px_-22px_rgba(40,60,120,.5)] body-[.no3d]:opacity-0"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 hidden items-center justify-center overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_40%,#eaf4ff,#cfe2f7)] text-[5rem] body-[.no3d]:flex" aria-hidden="true">
           🎄
         </div>
       </div>
-      <div className="globe-base">
-        <span className="globe-plate">JADEN&nbsp;·&nbsp;SANTA&nbsp;·&nbsp;HUANG</span>
+      <div className="relative z-[2] -mt-[18px] flex h-16 w-[min(330px,64vw)] items-center justify-center rounded-b-[26px] bg-[linear-gradient(180deg,var(--red),var(--red-deep))] shadow-[var(--shadow),inset_0_3px_0_rgba(255,255,255,.18)] [clip-path:polygon(8%_0,92%_0,100%_100%,0_100%)]">
+        <span className="font-mono text-[clamp(.6rem,1.4vw,.82rem)] font-bold tracking-[.18em] text-[var(--gold-soft)] [text-shadow:0_1px_2px_rgba(0,0,0,.4)]">JADEN&nbsp;·&nbsp;SANTA&nbsp;·&nbsp;HUANG</span>
       </div>
-      <p className={`globe-hint ${hintHidden ? "gone" : ""}`}>
+      <p className={`mt-3.5 font-display text-[.86rem] font-medium tracking-[.02em] text-[var(--ink-soft)] transition-opacity duration-300 ${hintHidden ? "opacity-0" : ""}`}>
         ✦ drag the globe to spin my world ✦
       </p>
     </div>

@@ -1,4 +1,13 @@
-import { ChipList, PageHero, Placeholder, ProjectLinks } from "../../components/portfolio";
+import {
+  ChipList,
+  PageHero,
+  Placeholder,
+  revealInClass,
+  sectionClass,
+  tiltClass,
+  tiltGlareClass,
+} from "../../components/ui";
+import { ProjectLinks } from "../../components/projects/ProjectLinks";
 
 const projects = [
   {
@@ -32,21 +41,32 @@ export default function ProjectsPage() {
   return (
     <>
       <PageHero eyebrow="🎁 Projects" title="Toys I've Shipped" body="A few things I've built and am proud of. Swap these for your real projects." />
-      <section className="section projects" id="projects">
-        <div className="projects-grid">
+      <section className={sectionClass} id="projects">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[26px]">
           {projects.map((project) => (
-            <article className="project-card reveal in tilt" key={project.title}>
-              <div className={`project-thumb${project.alt ? " alt" : ""}`}>
+            <article
+              className={`${revealInClass} ${tiltClass} relative flex flex-col overflow-hidden rounded-[var(--r)] bg-[var(--surface)] shadow-[var(--shadow-sm)]`}
+              key={project.title}
+            >
+              <div
+                className={`relative aspect-[16/10] p-3.5 ${
+                  project.alt ? "[background:var(--project-thumb-alt)]" : "[background:var(--project-thumb)]"
+                }`}
+              >
                 <Placeholder label="project screenshot" />
-                {project.featured ? <span className="ribbon">Featured</span> : null}
+                {project.featured ? (
+                  <span className="absolute right-3 top-3 z-[3] rounded-full bg-[var(--gold)] px-3 py-1 font-display text-[.78rem] font-semibold text-[#33202a] shadow-[var(--shadow-sm)]">
+                    Featured
+                  </span>
+                ) : null}
               </div>
-              <div className="project-body">
-                <h3>{project.title}</h3>
-                <p>{project.text}</p>
+              <div className="flex flex-1 flex-col gap-3 px-6 py-[22px]">
+                <h3 className="font-display text-[1.4rem] leading-[1.05]">{project.title}</h3>
+                <p className="flex-1 text-[.96rem] text-[var(--ink-soft)]">{project.text}</p>
                 <ChipList items={project.chips} small />
                 <ProjectLinks />
               </div>
-              <div className="tilt-glare" />
+              <div className={tiltGlareClass} />
             </article>
           ))}
         </div>

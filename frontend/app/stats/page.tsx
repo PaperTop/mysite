@@ -1,5 +1,5 @@
 import StatsDashboard from "../../components/StatsDashboard";
-import { PageHero } from "../../components/portfolio";
+import { PageHero } from "../../components/ui";
 
 export default function StatsPage() {
   return (

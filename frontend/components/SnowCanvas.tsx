@@ -79,5 +79,5 @@ export default function SnowCanvas() {
     };
   }, []);
 
-  return <canvas ref={snowRef} id="snow" aria-hidden="true" />;
+  return <canvas className="pointer-events-none fixed inset-0 z-[1]" ref={snowRef} id="snow" aria-hidden="true" />;
 }

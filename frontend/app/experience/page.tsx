@@ -1,4 +1,14 @@
-import { buttonBase, CandyDivider, ChipList, PageHero, SectionHead } from "../../components/portfolio";
+import {
+  buttonGreenClass,
+  CandyDivider,
+  ChipList,
+  PageHero,
+  revealInClass,
+  sectionClass,
+  SectionHead,
+  tiltClass,
+  tiltGlareClass,
+} from "../../components/ui";
 
 const skillGroups = [
   ["💻", "Languages", ["Python", "JavaScript", "TypeScript", "Java", "C++", "SQL"]],
@@ -45,15 +55,20 @@ export default function ExperiencePage() {
   return (
     <>
       <PageHero eyebrow="📜 Experience" title="Toolkit & Workshop Logs" body="What I build with, and where I've built it." />
-      <section className="section skills" id="skills">
+      <section className={sectionClass} id="skills">
         <SectionHead eyebrow="🧰 Skills" title="Santa's Toolkit" />
-        <div className="skills-grid">
-          {skillGroups.map(([emoji, title, chips]) => (
-            <article className="skill-card reveal in tilt" key={title}>
-              <span className="skill-emoji">{emoji}</span>
-              <h3>{title}</h3>
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[22px]">
+          {skillGroups.map(([emoji, title, chips], index) => (
+            <article
+              className={`${revealInClass} ${tiltClass} relative overflow-hidden rounded-[var(--r)] border-t-[5px] bg-[var(--surface)] p-7 shadow-[var(--shadow-sm)] ${
+                index % 2 === 0 ? "border-t-[var(--pine)]" : "border-t-[var(--red)]"
+              }`}
+              key={title}
+            >
+              <span className="mb-2.5 block text-[2.4rem]">{emoji}</span>
+              <h3 className="mb-4 font-display text-[1.3rem] leading-[1.05]">{title}</h3>
               <ChipList items={[...chips]} />
-              <div className="tilt-glare" />
+              <div className={tiltGlareClass} />
             </article>
           ))}
         </div>
@@ -61,29 +76,31 @@ export default function ExperiencePage() {
 
       <CandyDivider flip />
 
-      <section className="section work" id="work" data-screen-label="Experience — timeline">
+      <section className={sectionClass} id="work" data-screen-label="Experience — timeline">
         <SectionHead eyebrow="📜 Experience" title="Workshop Logs" />
-        <div className="timeline">
+        <div className="relative mx-auto max-w-[780px] pl-[42px] before:absolute before:bottom-2 before:left-[13px] before:top-2 before:w-1 before:rounded before:[background:var(--stripe)] before:bg-[length:30px_30px] before:content-['']">
           {timeline.map((item) => (
-            <article className="tl-item reveal in" key={item.title}>
-              <span className="tl-dot">{item.emoji}</span>
-              <div className="tl-card">
-                <div className="tl-top">
-                  <h3>{item.title}</h3>
-                  <span className="tl-date">{item.date}</span>
+            <article className={`${revealInClass} relative mb-[26px]`} key={item.title}>
+              <span className="absolute -left-[42px] top-[18px] grid h-[38px] w-[38px] -translate-x-[5px] place-items-center rounded-full bg-[var(--surface)] text-[1.1rem] shadow-[var(--shadow-sm)]">
+                {item.emoji}
+              </span>
+              <div className="rounded-[var(--r)] bg-[var(--surface)] px-[26px] py-6 shadow-[var(--shadow-sm)] transition-[transform,box-shadow] duration-[250ms] hover:translate-x-1 hover:shadow-[var(--shadow)]">
+                <div className="flex flex-wrap items-baseline justify-between gap-3.5">
+                  <h3 className="font-display text-[1.25rem] leading-[1.05]">{item.title}</h3>
+                  <span className="whitespace-nowrap font-display text-[.9rem] font-semibold text-[var(--pine)]">{item.date}</span>
                 </div>
-                <p className="tl-org">{item.org}</p>
-                <ul>
+                <p className="mb-3 mt-1 font-semibold text-[var(--red)]">{item.org}</p>
+                <ul className="list-disc pl-5 text-[var(--ink-soft)]">
                   {item.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
+                    <li className="mb-1.5" key={bullet}>{bullet}</li>
                   ))}
                 </ul>
               </div>
             </article>
           ))}
         </div>
-        <div className="work-cta reveal in">
-          <a className={`${buttonBase} btn-green`} href="#">
+        <div className={`${revealInClass} mt-10 text-center`}>
+          <a className={buttonGreenClass} href="#">
             📄 Download my résumé (the nice list)
           </a>
         </div>
