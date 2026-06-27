@@ -1,6 +1,5 @@
 import FloatingActions from "./FloatingActions";
 import { AuroraBackground, HolidayLights } from "./HolidayEffects";
-import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
 import SnowCanvas from "./SnowCanvas";
 import ThemeProvider from "./ThemeProvider";
@@ -15,7 +14,6 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         <HolidayLights />
         <SiteHeader />
         <main id="top">{children}</main>
-        <SiteFooter />
         <FloatingActions />
         <div className="pointer-events-none fixed inset-0 z-[70] overflow-hidden" id="snowburst" aria-hidden="true" />
       </>

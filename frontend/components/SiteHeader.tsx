@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { siteNavItems } from "./site-navigation";
 
 const navLinkClass =
-  "rounded-full px-3.5 py-2 text-[.95rem] font-semibold text-[var(--ink-soft)] transition duration-200 hover:bg-[rgba(209,43,58,.08)] hover:text-[var(--red)] body-[.night]:hover:bg-[rgba(255,120,130,.14)] body-[.night]:hover:text-[#ff9aa2] max-[920px]:px-4 max-[920px]:py-[13px] max-[920px]:text-[1.05rem]";
+  "rounded-full px-3.5 py-2 text-[.95rem] font-semibold text-[var(--ink)] transition duration-200 hover:bg-[rgba(209,43,58,.08)] hover:text-[var(--red)] body-[.night]:text-[#eaf0ff] body-[.night]:hover:bg-[rgba(255,120,130,.14)] body-[.night]:hover:text-[#ff9aa2] max-[920px]:px-4 max-[920px]:py-[13px] max-[920px]:text-[1.05rem]";
 const activeNavLinkClass =
-  "bg-[rgba(209,43,58,.1)] text-[var(--red)] body-[.night]:bg-[rgba(255,120,130,.16)] body-[.night]:text-[#ff9aa2]";
+  "bg-[rgba(209,43,58,.1)] text-[var(--red)] body-[.night]:bg-[rgba(255,176,184,.22)] body-[.night]:text-[#ffc3c8]";
 
 export default function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);

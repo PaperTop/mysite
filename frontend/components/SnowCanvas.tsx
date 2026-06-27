@@ -31,7 +31,7 @@ export default function SnowCanvas() {
     function resize() {
       width = currentCanvas.width = window.innerWidth;
       height = currentCanvas.height = window.innerHeight;
-      const count = Math.min(120, Math.floor(width / 16));
+      const count = Math.min(80, Math.floor(width / 24));
       flakes = Array.from({ length: count }, () => ({
         d: Math.random() * 0.55 + 0.35,
         o: Math.random() * 0.5 + 0.35,
