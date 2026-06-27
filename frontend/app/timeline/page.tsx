@@ -51,10 +51,10 @@ const timeline = [
   },
 ];
 
-export default function ExperiencePage() {
+export default function TimelinePage() {
   return (
     <>
-      <PageHero eyebrow="📜 Experience" title="Toolkit & Workshop Logs" body="What I build with, and where I've built it." />
+      <PageHero eyebrow="📜 Timeline" title="Toolkit & Workshop Logs" body="What I build with, and where I've built it." />
       <section className={sectionClass} id="skills">
         <SectionHead eyebrow="🧰 Skills" title="Santa's Toolkit" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[22px]">
@@ -76,8 +76,8 @@ export default function ExperiencePage() {
 
       <CandyDivider flip />
 
-      <section className={sectionClass} id="work" data-screen-label="Experience — timeline">
-        <SectionHead eyebrow="📜 Experience" title="Workshop Logs" />
+      <section className={sectionClass} id="work" data-screen-label="Timeline — work">
+        <SectionHead eyebrow="📜 Timeline" title="Workshop Logs" />
         <div className="relative mx-auto max-w-[780px] pl-[42px] before:absolute before:bottom-2 before:left-[13px] before:top-2 before:w-1 before:rounded before:[background:var(--stripe)] before:bg-[length:30px_30px] before:content-['']">
           {timeline.map((item) => (
             <article className={`${revealInClass} relative mb-[26px]`} key={item.title}>

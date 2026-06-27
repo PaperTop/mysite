@@ -13,11 +13,11 @@ import {
 } from "../components/ui";
 
 const exploreCards = [
-  { color: "#1a7a4e", emoji: "🧝", href: "/about", title: "About", text: "Who I am, where I study, and 24 little doors of trivia.", action: "Meet the elf" },
-  { color: "#d12b3a", emoji: "🎁", href: "/projects", title: "Projects", text: "The toys I've shipped — apps, ML, and open source.", action: "Open the gifts" },
-  { color: "#e6b24a", emoji: "📜", href: "/experience", title: "Experience", text: "My toolkit and the workshops I've worked in.", action: "Read the logs" },
-  { color: "#2a6fdb", emoji: "📊", href: "/stats", title: "Command Center", text: "Live North Pole metrics, tracked in glorious 3D.", action: "Check the vitals" },
-  { color: "#1a7a4e", emoji: "✉️", href: "/contact", title: "Contact", text: "Got an internship or idea? Send a letter to the Pole.", action: "Write to me" },
+  { color: "#1a7a4e", emoji: "🧝", href: "/me", title: "Me", text: "Who I am, where I study, and 24 little doors of trivia.", action: "Meet the elf" },
+  { color: "#d12b3a", emoji: "🎁", href: "/goods", title: "Goods", text: "The toys I've shipped — apps, ML, and open source.", action: "Open the gifts" },
+  { color: "#e6b24a", emoji: "📜", href: "/timeline", title: "Timeline", text: "My toolkit and the workshops I've worked in.", action: "Read the logs" },
+  { color: "#2a6fdb", emoji: "📊", href: "/brain", title: "Brain", text: "Live North Pole metrics, tracked in glorious 3D.", action: "Check the vitals" },
+  { color: "#1a7a4e", emoji: "✉️", href: "/letter", title: "Letter", text: "Got an internship or idea? Send a letter to the Pole.", action: "Write to me" },
 ];
 
 export default function HomePage() {
@@ -46,7 +46,7 @@ export default function HomePage() {
             </p>
             <div className="mb-7 flex flex-wrap gap-3.5 max-[920px]:justify-center">
               <Link href="#explore" className={buttonRedClass}>Explore the workshop</Link>
-              <Link href="/contact" className={buttonGhostClass}>Leave me a letter</Link>
+              <Link href="/letter" className={buttonGhostClass}>Leave me a letter</Link>
             </div>
             <div className="flex flex-wrap gap-2.5 text-[.95rem] font-semibold text-[var(--ink-soft)] max-[920px]:justify-center">
               <span>🎓 CS @ North Pole University</span>

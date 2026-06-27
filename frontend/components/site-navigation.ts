@@ -1,7 +1,7 @@
 export const siteNavItems = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/experience", label: "Experience" },
-  { href: "/stats", label: "Stats" },
+  { href: "/me", label: "Me" },
+  { href: "/goods", label: "Goods" },
+  { href: "/timeline", label: "Timeline" },
+  { href: "/brain", label: "Brain" },
 ] as const;

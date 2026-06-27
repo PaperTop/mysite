@@ -11,12 +11,12 @@ import {
   tiltGlareClass,
 } from "../../components/ui";
 
-export default function AboutPage() {
+export default function MePage() {
   return (
     <>
-      <PageHero eyebrow="🧝 About" title="Meet your favorite full-stack elf" body="A little chaos, a lot of joy, and code that's nice to read." />
+      <PageHero eyebrow="🧝 Me" title="Meet your favorite full-stack elf" body="A little chaos, a lot of joy, and code that's nice to read." />
 
-      <section className={sectionClass} id="about">
+      <section className={sectionClass} id="me">
         <div className="grid grid-cols-[.85fr_1.15fr] items-center gap-8 lg:gap-16 max-[860px]:grid-cols-1">
           <div className={`${revealInClass} flex flex-col items-center gap-4 max-[860px]:-order-1`}>
             <div className={`${tiltClass} relative aspect-[4/5] w-full max-w-[340px] rounded-[var(--r)] border-[3px] border-[var(--gold-soft)] bg-[var(--surface)] p-3.5 shadow-[var(--shadow)]`}>
@@ -57,7 +57,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className={sectionClass} id="education" data-screen-label="About — education">
+      <section className={sectionClass} id="education" data-screen-label="Me — education">
         <SectionHead eyebrow="🎓 Education" title="Where I learned the magic" />
         <div className={`${revealInClass} ${tiltClass} relative mx-auto flex max-w-[820px] items-start gap-[26px] overflow-hidden rounded-[var(--r)] border-l-[6px] border-l-[var(--gold)] bg-[var(--surface)] p-8 shadow-[var(--shadow-sm)]`}>
           <span className="text-[3.2rem] leading-none">🏔️</span>
@@ -76,7 +76,7 @@ export default function AboutPage() {
 
       <CandyDivider />
 
-      <section className={sectionClass} id="advent" data-screen-label="About — advent calendar">
+      <section className={sectionClass} id="advent" data-screen-label="Me — advent calendar">
         <SectionHead eyebrow="🎄 24 Days of Jaden" title="Open every door" description="A little advent calendar of who I am. Click a door — there's a surprise behind each one. (Door 24 is the good one.)" />
         <AdventCalendar />
       </section>

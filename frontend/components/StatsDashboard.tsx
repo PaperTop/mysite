@@ -86,7 +86,7 @@ export default function StatsDashboard() {
         ))}
       </div>
 
-      <div className={`${revealInClass} rounded-3xl bg-[var(--surface)] p-[22px] shadow-[var(--shadow-sm)] lg:p-[34px]`} data-screen-label="Stats — weekly chart">
+      <div className={`${revealInClass} rounded-3xl bg-[var(--surface)] p-[22px] shadow-[var(--shadow-sm)] lg:p-[34px]`} data-screen-label="Brain — weekly chart">
         <h3 className="mb-1 font-display text-[1.4rem] leading-[1.05]">Cheer delivered this week</h3>
         <p className="mb-[22px] text-[.92rem] text-[var(--ink-soft)]">Heart-points, but make it holiday. Saturday was a big one.</p>
         <div className="flex h-40 items-end gap-1.5" style={{ "--ec": "#1a7a4e" } as CSSProperties}>

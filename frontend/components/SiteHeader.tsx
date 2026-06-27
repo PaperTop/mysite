@@ -61,7 +61,7 @@ export default function SiteHeader() {
           );
         })}
         <Link
-          href="/contact"
+          href="/letter"
           className="rounded-full bg-[var(--pine)] px-3.5 py-2 text-[.95rem] font-semibold text-white shadow-[var(--shadow-sm)] transition duration-200 hover:-translate-y-px hover:bg-[var(--pine-dark)] max-[920px]:px-4 max-[920px]:py-[13px] max-[920px]:text-[1.05rem]"
           onClick={() => setOpen(false)}
         >

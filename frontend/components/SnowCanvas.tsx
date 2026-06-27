@@ -33,10 +33,10 @@ export default function SnowCanvas() {
       height = currentCanvas.height = window.innerHeight;
       const count = Math.min(120, Math.floor(width / 16));
       flakes = Array.from({ length: count }, () => ({
-        d: Math.random() + 0.5,
+        d: Math.random() * 0.55 + 0.35,
         o: Math.random() * 0.5 + 0.35,
         r: Math.random() * 2.6 + 1,
-        s: Math.random() * 0.6 - 0.3,
+        s: Math.random() * 0.24 - 0.12,
         x: Math.random() * width,
         y: Math.random() * height,
       }));
@@ -44,7 +44,7 @@ export default function SnowCanvas() {
 
     function draw() {
       context.clearRect(0, 0, width, height);
-      angle += 0.008;
+      angle += 0.004;
 
       for (const flake of flakes) {
         context.globalAlpha = flake.o;
@@ -53,8 +53,8 @@ export default function SnowCanvas() {
         context.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
         context.fill();
 
-        flake.y += flake.d * 0.9;
-        flake.x += Math.sin(angle + flake.s * 5) * 0.5 + flake.s;
+        flake.y += flake.d * 0.65;
+        flake.x += Math.sin(angle + flake.s * 5) * 0.24 + flake.s;
 
         if (flake.y > height + 5) {
           flake.y = -5;

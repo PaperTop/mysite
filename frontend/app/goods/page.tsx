@@ -37,11 +37,11 @@ const projects = [
   },
 ];
 
-export default function ProjectsPage() {
+export default function GoodsPage() {
   return (
     <>
-      <PageHero eyebrow="🎁 Projects" title="Toys I've Shipped" body="A few things I've built and am proud of. Swap these for your real projects." />
-      <section className={sectionClass} id="projects">
+      <PageHero eyebrow="🎁 Goods" title="Toys I've Shipped" body="A few things I've built and am proud of. Swap these for your real projects." />
+      <section className={sectionClass} id="goods">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[26px]">
           {projects.map((project) => (
             <article
