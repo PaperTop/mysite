@@ -1,6 +1,10 @@
 import { randomBytes } from "crypto";
 
-import { getGoogleHealthConfig, GOOGLE_HEALTH_SCOPE } from "./config";
+import {
+  getGoogleHealthOAuthConfig,
+  getGoogleHealthTokenConfig,
+  GOOGLE_HEALTH_SCOPE,
+} from "./config";
 
 const GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 const GOOGLE_TOKEN_URL = "https://oauth2.googleapis.com/token";
@@ -30,7 +34,7 @@ export function createGoogleHealthOAuthState() {
 }
 
 export function createGoogleHealthAuthorizationUrl(state: string) {
-  const config = getGoogleHealthConfig();
+  const config = getGoogleHealthOAuthConfig();
   const url = new URL(GOOGLE_AUTH_URL);
 
   url.search = new URLSearchParams({
@@ -47,7 +51,7 @@ export function createGoogleHealthAuthorizationUrl(state: string) {
 }
 
 export async function exchangeGoogleHealthCode(code: string) {
-  const config = getGoogleHealthConfig();
+  const config = getGoogleHealthOAuthConfig();
   const tokenResponse = await requestGoogleTokens({
     client_id: config.clientId,
     client_secret: config.clientSecret,
@@ -71,7 +75,7 @@ export async function exchangeGoogleHealthCode(code: string) {
 }
 
 export async function refreshGoogleHealthAccessToken(refreshToken: string) {
-  const config = getGoogleHealthConfig();
+  const config = getGoogleHealthTokenConfig();
   const tokenResponse = await requestGoogleTokens({
     client_id: config.clientId,
     client_secret: config.clientSecret,

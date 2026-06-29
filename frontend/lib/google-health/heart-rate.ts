@@ -47,6 +47,7 @@ export async function fetchLatestHeartRate(
   );
 
   const response = await fetch(url, {
+    cache: "no-store",
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${accessToken}`,

@@ -12,15 +12,58 @@ export type GoogleHealthConfig = {
   successRedirectPath: string;
 };
 
+export type GoogleHealthTokenConfig = {
+  clientId: string;
+  clientSecret: string;
+};
+
+export type GoogleHealthOAuthConfig = GoogleHealthTokenConfig & {
+  redirectUri: string;
+};
+
 export function getGoogleHealthConfig(): GoogleHealthConfig {
+  const oauthConfig = getGoogleHealthOAuthConfig();
+
+  return {
+    ...oauthConfig,
+    sessionSecret: getRequiredEnv("GOOGLE_HEALTH_SESSION_SECRET"),
+    successRedirectPath: getGoogleHealthSuccessRedirectPath(),
+  };
+}
+
+export function getGoogleHealthTokenConfig(): GoogleHealthTokenConfig {
   return {
     clientId: getRequiredEnv("GOOGLE_HEALTH_CLIENT_ID"),
     clientSecret: getRequiredEnv("GOOGLE_HEALTH_CLIENT_SECRET"),
-    redirectUri: getRequiredEnv("GOOGLE_HEALTH_REDIRECT_URI"),
-    sessionSecret: getRequiredEnv("GOOGLE_HEALTH_SESSION_SECRET"),
-    successRedirectPath:
-      process.env.GOOGLE_HEALTH_SUCCESS_REDIRECT_PATH ?? "/brain",
   };
+}
+
+export function getGoogleHealthOAuthConfig(): GoogleHealthOAuthConfig {
+  return {
+    ...getGoogleHealthTokenConfig(),
+    redirectUri: getRequiredEnv("GOOGLE_HEALTH_REDIRECT_URI"),
+  };
+}
+
+export function getGoogleHealthSuccessRedirectPath() {
+  return process.env.GOOGLE_HEALTH_SUCCESS_REDIRECT_PATH ?? "/brain";
+}
+
+export function getGoogleHealthOwnerRefreshToken() {
+  return process.env.GOOGLE_HEALTH_OWNER_REFRESH_TOKEN?.trim() || null;
+}
+
+export function isGoogleHealthOwnerTokenSetupMode() {
+  return (
+    process.env.NODE_ENV !== "production" &&
+    process.env.GOOGLE_HEALTH_OWNER_TOKEN_SETUP === "true"
+  );
+}
+
+export function isGoogleHealthOAuthSetupAllowed() {
+  return (
+    process.env.NODE_ENV !== "production" && !getGoogleHealthOwnerRefreshToken()
+  );
 }
 
 export function isSecureCookieEnvironment() {

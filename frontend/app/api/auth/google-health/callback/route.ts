@@ -2,8 +2,11 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import {
   getGoogleHealthConfig,
+  getGoogleHealthSuccessRedirectPath,
   GOOGLE_HEALTH_SESSION_COOKIE,
   GOOGLE_HEALTH_STATE_COOKIE,
+  isGoogleHealthOAuthSetupAllowed,
+  isGoogleHealthOwnerTokenSetupMode,
 } from "@/lib/google-health/config";
 import {
   exchangeGoogleHealthCode,
@@ -17,6 +20,16 @@ import {
 export const runtime = "nodejs";
 
 export async function GET(request: NextRequest) {
+  if (!isGoogleHealthOAuthSetupAllowed()) {
+    return NextResponse.json(
+      {
+        error: "google_health_oauth_disabled",
+        message: "Google Health OAuth setup is only available locally.",
+      },
+      { status: 404 },
+    );
+  }
+
   const searchParams = request.nextUrl.searchParams;
   const oauthError = searchParams.get("error");
   const code = searchParams.get("code");
@@ -32,8 +45,29 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const config = getGoogleHealthConfig();
     const tokens = await exchangeGoogleHealthCode(code);
+
+    if (isGoogleHealthOwnerTokenSetupMode()) {
+      const response = NextResponse.json(
+        {
+          message:
+            "Copy refreshToken into GOOGLE_HEALTH_OWNER_REFRESH_TOKEN, then set GOOGLE_HEALTH_OWNER_TOKEN_SETUP=false.",
+          refreshToken: tokens.refreshToken,
+          scope: tokens.scope,
+        },
+        {
+          headers: {
+            "Cache-Control": "no-store",
+          },
+        },
+      );
+
+      response.cookies.delete(GOOGLE_HEALTH_STATE_COOKIE);
+
+      return response;
+    }
+
+    const config = getGoogleHealthConfig();
     const response = redirectWithStatus(request, "connected");
 
     response.cookies.set(
@@ -76,8 +110,7 @@ export async function GET(request: NextRequest) {
 }
 
 function redirectWithStatus(request: NextRequest, status: string) {
-  const config = getGoogleHealthConfig();
-  const url = new URL(config.successRedirectPath, request.url);
+  const url = new URL(getGoogleHealthSuccessRedirectPath(), request.url);
 
   url.searchParams.set("googleHealth", status);
 
