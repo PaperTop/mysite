@@ -6,6 +6,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Jaden Huang - Personal Portfolio",
   description: "Artificial Intelligence student at UC San Diego building a personal, human portfolio.",
+  icons: {
+    icon: "/images/icon.png",
+    apple: "/images/icon.png",
+  },
 };
 
 export const viewport: Viewport = {
