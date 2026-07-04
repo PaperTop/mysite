@@ -11,6 +11,7 @@ The intended portfolio setup is owner mode: Jaden authorizes Google Health once,
 - `POST /api/auth/google-health/disconnect` clears the local Google Health session.
 - `DELETE /api/auth/google-health/disconnect` also clears the local Google Health session.
 - `GET /api/health/heart-rate/latest` returns the latest normalized heart-rate sample from `GOOGLE_HEALTH_OWNER_REFRESH_TOKEN` when configured.
+- `GET /api/health/brain/latest` returns the latest normalized heart-rate, HRV, and sleep-duration samples for the Brain page. It returns per-metric errors, so HRV can still update if sleep needs a new OAuth scope.
 
 ## Environment variables
 
@@ -42,6 +43,8 @@ Never prefix the refresh token with `NEXT_PUBLIC_`; it must stay server-side.
 8. Call `/api/health/heart-rate/latest`.
 
 After `GOOGLE_HEALTH_OWNER_REFRESH_TOKEN` is set, `/api/auth/google-health/start` returns `google_health_oauth_disabled` instead of letting another visitor connect.
+
+If `/api/health/brain/latest` returns `google_health_scope_missing` for sleep, repeat the owner-token setup flow after clearing `GOOGLE_HEALTH_OWNER_REFRESH_TOKEN` locally. The newer OAuth request includes the Google Health sleep readonly scope.
 
 ## Legacy local-session flow
 
