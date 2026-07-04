@@ -12,35 +12,35 @@ import { ProjectLinks } from "../../components/projects/ProjectLinks";
 const projects = [
   {
     alt: false,
-    chips: ["React", "Node", "WebSockets", "Mapbox"],
+    chips: ["In progress", "Systems", "UX"],
     featured: true,
-    title: "SleighOS",
-    text: "A real-time logistics dashboard that routes thousands of deliveries with a custom pathfinding algorithm. Handles peak load on the busiest night of the year.",
+    title: "Project bench",
+    text: "The place where polished projects will land. For now, this is a reminder that the portfolio is still actively becoming more real.",
   },
   {
     alt: true,
-    chips: ["Next.js", "TypeScript", "PWA"],
-    title: "Cocoa",
-    text: "A cozy habit-tracker that rewards you with warm fuzzies instead of guilt. Built mobile-first with offline sync and delightful micro-interactions.",
+    chips: ["Next.js", "TypeScript", "Play"],
+    title: "Personal site",
+    text: "This site is one of the experiments: playful interface, real code, weird little interactions, and a lot of iteration in public.",
   },
   {
     alt: false,
-    chips: ["Python", "PyTorch", "FastAPI"],
-    title: "NaughtyOrNice.ml",
-    text: "An ML classifier trained on a custom dataset that predicts intent with 9X% accuracy. My excuse to finally understand transformers from scratch.",
+    chips: ["AI", "Notes", "Learning"],
+    title: "Learning logs",
+    text: "A growing pile of notes from AI, systems, frontend craft, and whatever concept is currently bothering me enough to understand it.",
   },
   {
     alt: true,
-    chips: ["Go", "CLI", "OSS"],
-    title: "Mistletoe",
-    text: "A tiny open-source CLI that automates the boring parts of my workflow. Turns out other people hated those parts too.",
+    chips: ["Ideas", "Prototype", "Soon"],
+    title: "Next thing",
+    text: "A slot for the next real build. I like keeping a visible empty space because it makes the unfinished work harder to ignore.",
   },
 ];
 
 export default function GoodsPage() {
   return (
     <>
-      <PageHero eyebrow="🎁 Goods" title="Toys I've Shipped" body="A few things I've built and am proud of. Swap these for your real projects." />
+      <PageHero eyebrow="🎁 Goods" title="Work in progress" body="A workbench for projects, prototypes, and the things I am slowly turning into artifacts worth showing." />
       <section className={sectionClass} id="goods">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[26px]">
           {projects.map((project) => (

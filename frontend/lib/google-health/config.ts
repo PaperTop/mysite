@@ -1,5 +1,7 @@
-export const GOOGLE_HEALTH_SCOPE =
-  "https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly";
+export const GOOGLE_HEALTH_SCOPE = [
+  "https://www.googleapis.com/auth/googlehealth.health_metrics_and_measurements.readonly",
+  "https://www.googleapis.com/auth/googlehealth.sleep.readonly",
+].join(" ");
 
 export const GOOGLE_HEALTH_STATE_COOKIE = "google_health_oauth_state";
 export const GOOGLE_HEALTH_SESSION_COOKIE = "google_health_session";

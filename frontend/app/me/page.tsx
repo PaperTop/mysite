@@ -14,7 +14,7 @@ import {
 export default function MePage() {
   return (
     <>
-      <PageHero eyebrow="🧝 Me" title="Meet your favorite full-stack elf" body="A little chaos, a lot of joy, and code that's nice to read." />
+      <PageHero eyebrow="🧝 Me" title="Curious, a little chaotic, always building" body="A snapshot of how I learn, what I care about, and the small habits that keep me moving." />
 
       <section className={sectionClass} id="me">
         <div className="grid grid-cols-[.85fr_1.15fr] items-center gap-8 lg:gap-16 max-[860px]:grid-cols-1">
@@ -31,20 +31,19 @@ export default function MePage() {
 
           <div className={revealInClass}>
             <p className="mb-[18px] font-display text-[1.4rem] font-medium leading-[1.35] text-[var(--ink)]">
-              I&apos;m Jaden — a CS student who treats every project like Christmas morning.
+              I&apos;m Jaden — an Artificial Intelligence student who likes turning half-formed ideas into things people can actually poke at.
             </p>
             <p className="mb-4 text-[var(--ink-soft)]">
-              By day I&apos;m wrangling data structures and shipping clean, accessible interfaces. By night I&apos;m tinkering with side projects,
-              over-engineering my smart-home lights, and convincing myself that <em className="not-italic text-[var(--red)] font-semibold">this</em> is the year I finish the game I started.
-              I care about craft, kindness, and code that&apos;s nice to read.
+              I like projects that make me learn the uncomfortable part: the weird bug, the missing mental model, the feature that looks simple until it has to feel good.
+              I care about craft, kindness, and code that is nice to read.
             </p>
             <p className="mb-4 text-[var(--ink-soft)]">
-              I&apos;m looking for an internship where I can learn from people smarter than me and build things that actually reach humans. Bonus points if there are good snacks.
+              Lately I have been focused on building in public, tightening my fundamentals, and keeping a steady rhythm: ship something, reflect, then make the next version better.
             </p>
             <ul className="mt-[26px] flex list-none flex-wrap gap-6 max-[560px]:gap-4">
               {[
                 ["4", "languages I'm fluent in (the coding kind)"],
-                ["300+", "LeetCode problems wrestled"],
+                ["300+", "practice problems wrestled"],
                 ["2×", "hackathons won"],
               ].map(([value, label]) => (
                 <li className="flex flex-col" key={label}>
@@ -63,10 +62,9 @@ export default function MePage() {
           <span className="text-[3.2rem] leading-none">🏔️</span>
           <div className="flex-1">
             <div className="flex flex-wrap items-baseline justify-between gap-3.5">
-              <h3 className="font-display text-[1.45rem] leading-[1.05]">B.S. in Computer Science</h3>
-              <span className="whitespace-nowrap font-display text-[.9rem] font-semibold text-[var(--pine)]">Expected 2027</span>
+              <h3 className="font-display text-[1.45rem] leading-[1.05]">Artificial Intelligence</h3>
             </div>
-            <p className="mb-3 mt-1 font-semibold text-[var(--red)]">North Pole University &nbsp;·&nbsp; GPA 3.[X] / 4.0</p>
+            <p className="mb-3 mt-1 font-semibold text-[var(--red)]">University of California, San Diego</p>
             <p className="mb-4 mt-2.5 text-[var(--ink-soft)]">Relevant coursework: Data Structures &amp; Algorithms, Operating Systems, Machine Learning, Databases, Computer Networks, Distributed Systems.</p>
             <ChipList items={["Dean's List", "Hackathon Winner x2", "CS Club Officer"]} small />
           </div>
@@ -77,7 +75,7 @@ export default function MePage() {
       <CandyDivider />
 
       <section className={sectionClass} id="advent" data-screen-label="Me — advent calendar">
-        <SectionHead eyebrow="🎄 24 Days of Jaden" title="Open every door" description="A little advent calendar of who I am. Click a door — there's a surprise behind each one. (Door 24 is the good one.)" />
+        <SectionHead eyebrow="🎄 24 Days of Jaden" title="Open every door" description="A little advent calendar of who I am. Click a door and you get a tiny signal from the person behind the site." />
         <AdventCalendar />
       </section>
     </>

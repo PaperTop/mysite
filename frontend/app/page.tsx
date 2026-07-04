@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import SantaSoundButton from "../components/SantaSoundButton";
 import SnowGlobe from "../components/SnowGlobe";
 import {
   buttonGhostClass,
@@ -13,11 +14,10 @@ import {
 } from "../components/ui";
 
 const exploreCards = [
-  { color: "#1a7a4e", emoji: "🧝", href: "/me", title: "Me", text: "Who I am, where I study, and 24 little doors of trivia.", action: "Meet the elf" },
-  { color: "#d12b3a", emoji: "🎁", href: "/goods", title: "Goods", text: "The toys I've shipped — apps, ML, and open source.", action: "Open the gifts" },
-  { color: "#e6b24a", emoji: "📜", href: "/timeline", title: "Timeline", text: "My toolkit and the workshops I've worked in.", action: "Read the logs" },
-  { color: "#2a6fdb", emoji: "📊", href: "/brain", title: "Brain", text: "Live North Pole metrics, tracked in glorious 3D.", action: "Check the vitals" },
-  { color: "#1a7a4e", emoji: "✉️", href: "/letter", title: "Letter", text: "Got an internship or idea? Send a letter to the Pole.", action: "Write to me" },
+  { color: "#1a7a4e", emoji: "🧝", href: "/me", title: "Me", text: "The person behind the projects: habits, quirks, and what keeps me learning.", action: "Meet me" },
+  { color: "#d12b3a", emoji: "🎁", href: "/goods", title: "Goods", text: "A workbench for projects, experiments, and things I am turning into real artifacts.", action: "Open the workbench" },
+  { color: "#e6b24a", emoji: "📜", href: "/timeline", title: "Timeline", text: "The tools I reach for and the trail of what I have been practicing.", action: "Read the logs" },
+  { color: "#2a6fdb", emoji: "📊", href: "/brain", title: "Brain", text: "Private-ish signals, notes, and the parts of my life that keep updating.", action: "Check the vitals" },
 ];
 
 export default function HomePage() {
@@ -30,28 +30,24 @@ export default function HomePage() {
       >
         <div className="grid w-full grid-cols-[1.05fr_.95fr] items-center gap-6 lg:gap-14 max-[920px]:grid-cols-1 max-[920px]:text-center">
           <div className={`${revealInClass} relative max-[920px]:order-2`}>
-            <p className="mb-5 inline-block rounded-full border-2 border-dashed border-[var(--pine)] bg-[var(--surface)] px-[18px] py-[7px] font-display text-[.95rem] font-semibold text-[var(--pine)] shadow-[var(--shadow-sm)] body-[.night]:border-[var(--gold-soft)] body-[.night]:text-[var(--gold-soft)]">
-              Ho ho ho, welcome to my workshop
-            </p>
             <h1 className="mb-[18px] font-display text-[clamp(2.5rem,5.6vw,4.6rem)] font-bold leading-[1.05] [text-shadow:0_3px_0_rgba(255,255,255,.7)] body-[.night]:[text-shadow:0_0_26px_rgba(120,150,255,.35)]">
               Hi, I&apos;m{" "}
               <span className="block sm:inline sm:whitespace-nowrap">
-                Jaden <span className="font-script font-bold text-[var(--gold)]">Santa</span>{" "}
+                Jaden <SantaSoundButton />{" "}
                 <span className="block sm:inline">Huang</span>
               </span>
             </h1>
             <p className="mb-[30px] max-w-[560px] text-[clamp(1.02rem,1.5vw,1.22rem)] text-[var(--ink-soft)] max-[920px]:mx-auto">
-              A computer science student &amp; full-stack developer who ships delightful things all year round — not just in December.
-              Currently hunting for <strong className="text-[var(--red)]">Summer 2026 internships</strong>.
+              An Artificial Intelligence student at UC San Diego building little systems, learning in public, and trying to get better every week.
             </p>
             <div className="mb-7 flex flex-wrap gap-3.5 max-[920px]:justify-center">
               <Link href="#explore" className={buttonRedClass}>Explore the workshop</Link>
               <Link href="/letter" className={buttonGhostClass}>Leave me a letter</Link>
             </div>
             <div className="flex flex-wrap gap-2.5 text-[.95rem] font-semibold text-[var(--ink-soft)] max-[920px]:justify-center">
-              <span>🎓 CS @ North Pole University</span>
+              <span>🎓 AI @ UC San Diego</span>
               <span className="text-[var(--gold)]">•</span>
-              <span>⚡ Open to work</span>
+              <span>⚡ Always building</span>
             </div>
           </div>
 
@@ -66,7 +62,7 @@ export default function HomePage() {
       <CandyDivider />
 
       <section className={sectionClass} id="explore" data-screen-label="Home — explore">
-        <SectionHead eyebrow="🧭 Explore" title="Where to next?" description="Five stops on the tour. Start wherever you like." />
+        <SectionHead eyebrow="🧭 Explore" title="Where to next?" description="Four stops on the tour. Start wherever you like." />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-5">
           {exploreCards.map((card) => (
             <Link

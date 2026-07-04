@@ -4,7 +4,7 @@ import { useState } from "react";
 import { revealInClass } from "./ui";
 
 const doors = [
-  ["🎓", "CS @ North Pole U, class of 2027"],
+  ["🎓", "Artificial Intelligence @ UC San Diego"],
   ["💾", "First program: a Discord bot at 14"],
   ["🏆", "2× hackathon winner"],
   ["⚡", "200+ commits last month"],
@@ -27,7 +27,7 @@ const doors = [
   ["💡", "40+ project ideas in a folder"],
   ["🧊", "Cool under pressure"],
   ["📬", "Open to collaboration"],
-  ["🎁", "Available Summer 2026 — let's build!"],
+  ["🎁", "Still building, still learning"],
 ];
 
 export default function AdventCalendar() {

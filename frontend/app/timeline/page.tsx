@@ -19,34 +19,34 @@ const skillGroups = [
 
 const timeline = [
   {
-    date: "Summer 2025",
+    date: "Now",
     emoji: "🎁",
-    org: "Tinsel & Co. - placeholder company",
-    title: "Software Engineering Intern",
+    org: "Personal workbench",
+    title: "Building projects in public",
     bullets: [
-      "Built and shipped a feature used by [X] users, improving [metric] by [Y]%.",
-      "Collaborated with a cross-functional team to redesign the onboarding flow.",
-      "Wrote tests, reviewed PRs, and kept the deploy pipeline merry and bright.",
+      "Iterating on this site as a real product surface instead of a frozen profile.",
+      "Practicing the loop of build, inspect, tighten, and write down what changed.",
+      "Keeping small experiments visible so progress is easier to notice and harder to fake.",
     ],
   },
   {
     date: "2024 - Present",
     emoji: "⭐",
-    org: "North Pole University, [Lab Name]",
-    title: "Undergraduate Research Assistant",
+    org: "UC San Diego",
+    title: "Artificial Intelligence student",
     bullets: [
-      "Researching [topic] under Prof. [Name]; co-authored a paper currently in review.",
-      "Built data-processing tooling that cut analysis time from hours to minutes.",
+      "Studying the fundamentals behind intelligent systems, data, and software that scales past toy examples.",
+      "Using coursework as fuel for side projects, notes, and experiments that make the concepts stick.",
     ],
   },
   {
     date: "2023 - 2024",
     emoji: "🔔",
-    org: "North Pole University",
-    title: "Teaching Assistant - Intro to CS",
+    org: "Projects, clubs, and late-night debugging",
+    title: "Learning by making",
     bullets: [
-      "Led weekly lab sections for 30+ students; held office hours and graded with care.",
-      "Created supplemental materials that students actually said were helpful.",
+      "Chasing the parts of software that feel just out of reach, then building enough to make them less mysterious.",
+      "Trying to be the kind of teammate who brings steady energy, low ego, and readable code.",
     ],
   },
 ];
@@ -54,7 +54,7 @@ const timeline = [
 export default function TimelinePage() {
   return (
     <>
-      <PageHero eyebrow="📜 Timeline" title="Toolkit & Workshop Logs" body="What I build with, and where I've built it." />
+      <PageHero eyebrow="📜 Timeline" title="Toolkit & Workshop Logs" body="What I reach for, what I am practicing, and how the work is changing over time." />
       <section className={sectionClass} id="skills">
         <SectionHead eyebrow="🧰 Skills" title="Santa's Toolkit" />
         <div className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-[22px]">
@@ -77,7 +77,7 @@ export default function TimelinePage() {
       <CandyDivider flip />
 
       <section className={sectionClass} id="work" data-screen-label="Timeline — work">
-        <SectionHead eyebrow="📜 Timeline" title="Workshop Logs" />
+        <SectionHead eyebrow="📜 Timeline" title="Workshop Logs" description="Less of a formal timeline, more of a record of what I am actively becoming better at." />
         <div className="relative mx-auto max-w-[780px] pl-[42px] before:absolute before:bottom-2 before:left-[13px] before:top-2 before:w-1 before:rounded before:[background:var(--stripe)] before:bg-[length:30px_30px] before:content-['']">
           {timeline.map((item) => (
             <article className={`${revealInClass} relative mb-[26px]`} key={item.title}>
@@ -100,8 +100,8 @@ export default function TimelinePage() {
           ))}
         </div>
         <div className={`${revealInClass} mt-10 text-center`}>
-          <a className={buttonGreenClass} href="#">
-            📄 Download my résumé (the nice list)
+          <a className={buttonGreenClass} href="/letter">
+            ✉️ Ask me what I am building
           </a>
         </div>
       </section>

@@ -41,6 +41,16 @@
     --footer-bg:linear-gradient(180deg,transparent,rgba(0,0,0,.3));
     --nav-bg:rgba(13,19,38,.86);
   }
+
+  .github-contribution-preview{
+    --gh-0:#dfe7e2;--gh-1:#95dca0;--gh-2:#4fcf6a;--gh-3:#2fa755;--gh-4:#19713a;
+    --gh-border:rgba(27,31,35,.08);--gh-panel:#eef2f0;
+  }
+
+  body.night .github-contribution-preview{
+    --gh-0:#17243a;--gh-1:#0d442c;--gh-2:#126235;--gh-3:#1f8744;--gh-4:#2fac57;
+    --gh-border:rgba(120,230,180,.16);--gh-panel:#10192d;
+  }
 }
 
 @keyframes aurora-shift{0%,100%{transform:translateX(-3%) scaleY(1)}50%{transform:translateX(3%) scaleY(1.12)}}

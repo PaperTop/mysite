@@ -37,6 +37,15 @@ export async function fetchLatestHeartRate(
   accessToken: string,
   lookbackHours = 24,
 ): Promise<LatestHeartRate | null> {
+  const samples = await fetchRecentHeartRates(accessToken, lookbackHours);
+
+  return samples[samples.length - 1] ?? null;
+}
+
+export async function fetchRecentHeartRates(
+  accessToken: string,
+  lookbackHours = 24,
+): Promise<LatestHeartRate[]> {
   const url = new URL(HEART_RATE_DATA_POINTS_URL);
   const since = new Date(Date.now() - lookbackHours * 60 * 60 * 1000);
 
@@ -60,13 +69,14 @@ export async function fetchLatestHeartRate(
 
   const data = (await response.json()) as GoogleHealthDataPointsResponse;
 
-  return normalizeLatestHeartRate(data);
+  return normalizeHeartRateSamples(data);
 }
 
-function normalizeLatestHeartRate(
+function normalizeHeartRateSamples(
   data: GoogleHealthDataPointsResponse,
-): LatestHeartRate | null {
-  const latestPoint = data.dataPoints
+): LatestHeartRate[] {
+  return (
+    data.dataPoints
     ?.map((point) => {
       const bpm = Number(point.heartRate?.beatsPerMinute);
       const measuredAt = point.heartRate?.sampleTime?.physicalTime;
@@ -83,18 +93,15 @@ function normalizeLatestHeartRate(
       };
     })
     .filter((point) => point !== null)
-    .sort((a, b) => b.measuredAtMs - a.measuredAtMs)[0];
-
-  if (!latestPoint || !Number.isFinite(latestPoint.measuredAtMs)) {
-    return null;
-  }
-
-  return {
-    bpm: latestPoint.bpm,
-    measuredAt: latestPoint.measuredAt,
-    source: formatSource(latestPoint.point),
-    stale: Date.now() - latestPoint.measuredAtMs > 15 * 60 * 1000,
-  };
+    .filter((point) => Number.isFinite(point.measuredAtMs))
+    .sort((a, b) => a.measuredAtMs - b.measuredAtMs)
+    .map((point) => ({
+      bpm: point.bpm,
+      measuredAt: point.measuredAt,
+      source: formatSource(point.point),
+      stale: Date.now() - point.measuredAtMs > 15 * 60 * 1000,
+    })) ?? []
+  );
 }
 
 function formatSource(point: GoogleHealthHeartRatePoint) {

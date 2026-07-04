@@ -4,8 +4,8 @@ import SiteShell from "../components/SiteShell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jaden Santa Huang - Full-Stack Elf",
-  description: "CS student and full-stack developer. Open to Summer 2026 internships.",
+  title: "Jaden Huang - Personal Portfolio",
+  description: "Artificial Intelligence student at UC San Diego building a personal, human portfolio.",
 };
 
 export const viewport: Viewport = {

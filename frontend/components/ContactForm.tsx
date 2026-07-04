@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { buttonRedClass } from "./ui";
 
+const contactEmail = "JSH007@UCSD.edu";
 const fieldClass = "flex flex-col gap-1.5";
 const labelClass = "font-display text-[.92rem] font-semibold";
 const inputClass =
@@ -24,7 +25,11 @@ export default function ContactForm() {
       return;
     }
 
-    setStatus({ type: "ok", text: "🎉 Sent up the chimney! Jaden will reply faster than St. Nick. (Demo form — hook up your email!)" });
+    const subject = encodeURIComponent(`Website message from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    setStatus({ type: "ok", text: "Opening your email app with the note addressed to Jaden." });
     form.reset();
   }
 
@@ -47,24 +52,24 @@ export default function ContactForm() {
           className={inputClass}
           id="cemail"
           name="email"
-          placeholder="you@company.com"
+          placeholder="you@example.com"
           required
           type="email"
         />
       </div>
       <div className={`${fieldClass} col-span-full`}>
-        <label className={labelClass} htmlFor="cmsg">Your wish list</label>
+        <label className={labelClass} htmlFor="cmsg">Your note</label>
         <textarea
           className={inputClass}
           id="cmsg"
           name="message"
-          placeholder="Tell me what you're building…"
+          placeholder="A thought, question, idea, or tiny life update..."
           required
           rows={4}
         />
       </div>
       <button className={`${buttonRedClass} col-span-full w-full`} type="submit">
-        🎄 Send it up the chimney
+        🎄 Email Jaden
       </button>
       <p
         className={`col-span-full m-0 min-h-[1.2em] text-center font-semibold ${
