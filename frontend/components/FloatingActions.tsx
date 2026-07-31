@@ -13,7 +13,7 @@ export default function FloatingActions() {
         className={controlButtonClass}
         type="button"
         aria-label="Toggle day/night"
-        title="Day / Night"
+        title="Switch day/night theme"
         onClick={() => setNight((value) => !value)}
       >
         {night ? "☀️" : "🌙"}
