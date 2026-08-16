@@ -9,6 +9,7 @@ The Next.js app lives in `frontend/`.
 ```bash
 npm run dev
 npm run build
+npm run start
 npm run lint
 ```
 
